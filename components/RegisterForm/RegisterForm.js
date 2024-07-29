@@ -34,13 +34,13 @@ const RegisterForm = ({ setIsShowLoginForm }) => {
 
             if (result.status) {
                 console.log(result);
-                // delete result.result.password;
-                // localStorage.setItem("user", JSON.stringify(result.result));
+                delete result.result.password;
+                localStorage.setItem("user", JSON.stringify(result.result));
                 toast.success("Successfully registerd!");
                 route.push("/resturant/dashboard");
             } else {
                 console.log(result);
-                toast.error("Registration failed!");
+                toast.error(`Registration failed (${result?.message})`);
             }
         }
     };

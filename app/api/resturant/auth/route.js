@@ -19,21 +19,41 @@ export async function GET(req) {
     }
 }
 export async function POST(req) {
+    await connectDB();
     const payload = await req.json();
+
+    let result = false;
+
     try {
-        await connectDB();
-        const response = new ResturantModel(payload);
-        const result = await response.save();
+        if (payload.login) {
+            if (payload.resturantEmail && payload.resturantPassword) {
+                result = await ResturantModel.findOne({
+                    resturantEmail: payload.resturantEmail,
+                    resturantPassword: payload.resturantPassword,
+                });
+            } else {
+                return NextResponse.json({
+                    status: false,
+                    message: "Valid email and password required",
+                    result: null,
+                });
+            }
+        } else {
+            const response = new ResturantModel(payload);
+            result = await response.save();
+        }
         return NextResponse.json({
-            status: true,
-            message: "User regestered",
+            status: result ? true : false,
+            message: result
+                ? "Login Successfull"
+                : "email or password not matched",
             result,
         });
     } catch (error) {
         console.log(error.message);
         return NextResponse.json({
             status: false,
-            message: "regestration failed",
+            message: "Operation failed",
             result: error?.message,
         });
     }

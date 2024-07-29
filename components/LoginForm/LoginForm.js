@@ -1,10 +1,14 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 import { useForm } from "react-hook-form";
 
+import { toast } from "react-hot-toast";
+
 const LoginForm = ({ setIsShowLoginForm }) => {
     const [showPassword, setShowPassword] = useState(false);
+    const route = useRouter();
 
     const {
         register,
@@ -14,20 +18,28 @@ const LoginForm = ({ setIsShowLoginForm }) => {
     } = useForm();
 
     const onSubmit = async (data) => {
-        const temp = {
-            resturantName: "testing resturant name",
-            resturantOwner: "testing owner",
-        };
         const options = {
             method: "POST",
-            body: JSON.stringify(temp),
+            body: JSON.stringify({
+                ...data,
+                login: true,
+            }),
         };
         let response = await fetch(
             "http://localhost:3000/api/resturant/auth",
             options
         );
         const result = await response.json();
-        console.log(result);
+        if (result.status) {
+            console.log(result);
+            delete result.result.password;
+            localStorage.setItem("user", JSON.stringify(result.result));
+            toast.success("Successfully Login!");
+            route.push("/resturant/dashboard");
+        } else {
+            console.log(result);
+            toast.error(`Login failed (${result?.message})`);
+        }
     };
     return (
         <div className="auth-form-container">
