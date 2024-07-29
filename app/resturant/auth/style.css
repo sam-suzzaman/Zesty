@@ -19,17 +19,29 @@
 }
 .auth-form .auth-title-row {
     margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.auth-form .auth-title-row > .form-name {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--primary-clr);
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1rem;
 }
 .auth-form .auth-title-row > .title {
     font-weight: 600;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     color: var(--black-clr);
     text-align: center;
 }
-.auth-form .auth-title-row > .title > .fancy {
+/* .auth-form .auth-title-row > .title > .fancy {
     font-weight: bold;
-    color: var(--primary-clr);
-}
+    color: var(--black-clr);
+} */
+
 .auth-form .input-row {
     display: flex;
     flex-direction: column;

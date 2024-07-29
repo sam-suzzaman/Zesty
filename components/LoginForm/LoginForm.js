@@ -1,38 +1,93 @@
 "use client";
 import React, { useState } from "react";
 
+import { useForm } from "react-hook-form";
+
 const LoginForm = ({ setIsShowLoginForm }) => {
     const [showPassword, setShowPassword] = useState(false);
+
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm();
+
+    const onSubmit = async (data) => {
+        const temp = {
+            resturantName: "testing resturant name",
+            resturantOwner: "testing owner",
+        };
+        const options = {
+            method: "POST",
+            body: JSON.stringify(temp),
+        };
+        let response = await fetch(
+            "http://localhost:3000/api/resturant/auth",
+            options
+        );
+        const result = await response.json();
+        console.log(result);
+    };
     return (
         <div className="auth-form-container">
-            <form className="auth-form">
+            <form
+                className="auth-form"
+                onSubmit={handleSubmit(onSubmit)}
+                autoComplete="off"
+            >
                 {/* form title row */}
                 <div className="auth-title-row">
-                    <h3 className="title">
-                        Back to <span className="fancy">Login</span>
-                    </h3>
+                    <h6 className="form-name">resturant</h6>
+                    <h3 className="title">Back to Login</h3>
                 </div>
-                {/* input-1 */}
+                {/* input-1:resturant email */}
                 <div className="input-row">
-                    <label htmlFor="">email</label>
-                    <input type="email" placeholder="Enter Email" />
-                    <span className="input-error">something wrong</span>
+                    <label htmlFor="">resturant email address:</label>
+                    <input
+                        type="email"
+                        placeholder="Enter email address"
+                        {...register("resturantEmail", {
+                            required: {
+                                value: true,
+                                message: "Resturant email address is requird",
+                            },
+                        })}
+                    />
+                    {errors?.resturantEmail && (
+                        <span className="input-error">
+                            {errors?.resturantEmail?.message}
+                        </span>
+                    )}
                 </div>
-                {/* input-2 */}
+
+                {/* input-2:resturant password */}
                 <div className="input-row">
-                    <label htmlFor="">Password</label>
+                    <label htmlFor="">resturant password:</label>
                     <input
                         type={showPassword ? "text" : "password"}
-                        placeholder="Enter Password"
+                        placeholder="Enter resturant password"
+                        {...register("resturantPassword", {
+                            required: {
+                                value: true,
+                                message: "Restuant password is requird",
+                            },
+                        })}
                     />
-                    <span className="input-error">something wrong</span>
+                    {errors?.resturantPassword && (
+                        <span className="input-error">
+                            {errors?.resturantPassword?.message}
+                        </span>
+                    )}
                 </div>
-                {/* input-3:Show password */}
-                <div
-                    className="show-pass-toggler"
-                    onClick={() => setShowPassword(!showPassword)}
-                >
-                    <input type="checkbox" id="togglePassword" />
+
+                {/* Show/hide password */}
+                <div className="show-pass-toggler">
+                    <input
+                        type="checkbox"
+                        id="togglePassword"
+                        onChange={() => setShowPassword(!showPassword)}
+                    />
                     <label htmlFor="togglePassword">show password</label>
                 </div>
                 {/* submit btn */}

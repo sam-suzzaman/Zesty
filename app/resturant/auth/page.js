@@ -5,11 +5,6 @@ import React, { useState } from "react";
 
 import "./style.css";
 
-// form toggle text
-const formToggleText = {
-    loginCase: { text: "Don't have an account?", btnText: "Register now" },
-    registerCase: { text: "Already have an account?", btnText: "Login now" },
-};
 const UserAuthenticationPage = () => {
     const [showLoginForm, setIsShowLoginForm] = useState(true);
 
