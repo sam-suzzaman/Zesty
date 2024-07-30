@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./style.css";
 import "./sidebar.style.css";
@@ -17,6 +17,7 @@ import { SiReaddotcv } from "react-icons/si";
 
 import Logo from "@/components/Shared/Logo/Logo";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const navData = [
     {
@@ -41,7 +42,21 @@ const navData = [
 
 export default function DashboardLayout({ children }) {
     const [showSidebar, setShowSidebar] = useState(false);
+    const [userInfo, setUserInfo] = useState(null);
+
     const pathName = usePathname();
+    const route = useRouter();
+
+    useEffect(() => {
+        let user = localStorage.getItem("user");
+        if (!user && pathName == "/resturant/dashboard") {
+            route.push("/resturant/auth");
+        } else if (user && pathName == "/resturant/auth") {
+            route.push("/resturant/dashboard");
+        } else {
+            setUserInfo(JSON.parse(user));
+        }
+    }, []);
 
     return (
         <section className="resturent-d-wrapper">
@@ -67,7 +82,6 @@ export default function DashboardLayout({ children }) {
                         <ul className="sidebar-menu">
                             {navData?.map((item) => {
                                 const isActive = pathName === item.href;
-                                console.log(pathName);
                                 return (
                                     <li key={item._id}>
                                         <Link
@@ -112,7 +126,7 @@ export default function DashboardLayout({ children }) {
                             </Link>
                         </div>
                     </nav>
-                    
+
                     <div className="resturent-d-content-row">{children}</div>
                 </div>
             </main>
