@@ -16,6 +16,7 @@ html {
 :root {
     --primary-clr: #eb4a4a;
     --secondary-clr: #d82e2e;
+    --accent-clr: #4d4d4d;
     --white-clr: #fff;
     --black-clr: #000;
 }

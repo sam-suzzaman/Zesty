@@ -1,0 +1,60 @@
+.resturent-d-right-main .resturent-d-right-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.resturent-d-right-main .resturent-d-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1.5rem;
+    box-shadow: 4px 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+.resturent-d-right-main .resturent-d-navbar > .left .sidebar-toggler {
+    font-size: 1.5rem;
+    color: var(--secondary-clr);
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 0.18rem 0.25rem;
+    border-radius: 0.1rem;
+}
+.resturent-d-right-main .resturent-d-navbar > .left .sidebar-toggler:hover {
+    color: var(--primary-clr);
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.resturent-d-right-main .resturent-d-navbar > .right .home-btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--secondary-clr);
+    padding: 0.2rem 0.75rem;
+    border-radius: 0.25rem;
+}
+.resturent-d-right-main .resturent-d-navbar > .right .home-btn > .icon {
+    font-size: 1.2rem;
+    margin-right: 0.25rem;
+}
+.resturent-d-right-main .resturent-d-navbar > .right .home-btn:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+    color: var(--primary-clr);
+}
+
+.resturent-d-right-main .resturent-d-content-row {
+    margin: 1rem;
+    background-color: var(--white-clr);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    height: 100%;
+}

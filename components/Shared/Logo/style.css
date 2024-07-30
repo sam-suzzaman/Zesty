@@ -1,0 +1,11 @@
+.brand {
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: #4d4d4d;
+    letter-spacing: 1px;
+}
+.brand > .fancy {
+    color: var(--primary-clr);
+    text-transform: uppercase;
+    font-size: 1.8rem;
+}
