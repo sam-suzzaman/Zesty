@@ -1,0 +1,122 @@
+.manage-food-page-wrapper {
+}
+
+.manage-food-page-wrapper > .page-title-row .title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    color: var(--accent-clr);
+    line-height: 1.5rem;
+}
+.manage-food-page-wrapper > .page-title-row .subtitle {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--accent-clr);
+    opacity: 0.8;
+    margin-top: 0.4rem;
+}
+
+/* table style */
+.manage-food-page-wrapper > .food-list-table {
+    margin-top: 2rem;
+    overflow-x: auto;
+}
+
+.manage-food-page-wrapper .table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 1200px;
+}
+
+.manage-food-page-wrapper .table th:nth-child(1) {
+    width: 7%;
+}
+.manage-food-page-wrapper .table th:nth-child(2) {
+    width: 50%;
+}
+.manage-food-page-wrapper .table th:nth-child(3) {
+    width: 10%;
+}
+.manage-food-page-wrapper .table th:nth-child(4) {
+    width: 8%;
+}
+.manage-food-page-wrapper .table th:nth-child(5) {
+    width: 18%;
+}
+
+.manage-food-page-wrapper .table thead tr {
+    background-color: var(--primary-clr);
+    color: var(--white-clr);
+}
+
+.manage-food-page-wrapper .table tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 0.35em;
+}
+
+.manage-food-page-wrapper .table th,
+.manage-food-page-wrapper .table td {
+    padding: 0.625em;
+    text-align: center;
+    border-right: 1px solid #ddd;
+}
+
+.manage-food-page-wrapper .table th {
+    font-size: 0.85em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.manage-food-page-wrapper .table .txt-left {
+    text-align: left;
+}
+
+/* action button */
+
+.manage-food-page-wrapper .action-row {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.manage-food-page-wrapper .action-btn {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-transform: capitalize;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    padding: 0.15rem 0.75rem;
+    border-radius: 0.25rem;
+}
+
+.manage-food-page-wrapper .action-btn.view {
+    background-color: #b1ffd5;
+    color: #006e34;
+}
+.manage-food-page-wrapper .action-btn.view:hover {
+    background-color: #59fea6;
+    color: #015e2d;
+}
+.manage-food-page-wrapper .action-btn.edit {
+    background-color: #ffe0b1;
+    color: #b15600;
+}
+.manage-food-page-wrapper .action-btn.edit:hover {
+    background-color: #ffc672;
+    color: #874100;
+}
+.manage-food-page-wrapper .action-btn.delete {
+    background-color: #fcc2bb;
+    color: #a50303;
+}
+.manage-food-page-wrapper .action-btn.delete:hover {
+    background-color: #fc9689;
+    color: #bf0101;
+}
