@@ -8,6 +8,10 @@ import { FiEdit } from "react-icons/fi";
 import { FaEye } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
+import { toast } from "react-hot-toast";
+
+import swal from "sweetalert";
+
 const page = () => {
     const [foods, setFoods] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -30,18 +34,47 @@ const page = () => {
             let url = `http://localhost:3000/api/resturant/food/${resturant._id}`;
             const response = await fetch(url);
             const result = await response.json();
-            console.log(result);
 
             if (!result.status) {
                 setIsError(`${result.message} (${result.result})`);
                 setFoods(null);
             } else {
                 setIsError(false);
-                console.log(result.result);
                 setFoods(result.result);
             }
         }
         setIsLoading(false);
+    };
+
+    const handleDeleteFood = async (id) => {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                deleteFoodHandler(id);
+            } else {
+                toast.success(`Cancel! Your food is safe`);
+            }
+        });
+    };
+
+    const deleteFoodHandler = async (id) => {
+        let response = await fetch(
+            `http://localhost:3000/api/resturant/food/${id}`,
+            { method: "DELETE" }
+        );
+        const result = await response.json();
+        if (result.status) {
+            toast.success(`Done! ${result.message}`);
+            foodListFetchHandler();
+        } else {
+            console.log(result);
+            toast.error(`Operation failed (${result?.message})`);
+        }
     };
 
     if (isLoading) {
@@ -73,9 +106,9 @@ const page = () => {
                     </thead>
                     <tbody>
                         {foods?.map((food, index) => (
-                            <tr>
+                            <tr key={food._id}>
                                 <td>{index + 1}</td>
-                                <td className="txt-left capitalize">
+                                <td className="txt-left capitalize font-semibold">
                                     {food.foodTitle}
                                 </td>
                                 <td>{food.foodPrice} TK</td>
@@ -84,7 +117,7 @@ const page = () => {
                                         <img
                                             src={food.foodThumbnail}
                                             alt=""
-                                            className="w-[50px] rounded-md"
+                                            className="w-[50px] h-[35px] rounded-md object-cover"
                                         />
                                     </div>
                                 </td>
@@ -96,7 +129,12 @@ const page = () => {
                                         <button className="edit action-btn">
                                             <FiEdit className="mr-1" /> edit
                                         </button>
-                                        <button className="delete action-btn">
+                                        <button
+                                            className="delete action-btn"
+                                            onClick={() =>
+                                                handleDeleteFood(food._id)
+                                            }
+                                        >
                                             <MdDelete className="mr-1" /> delete
                                         </button>
                                     </div>
