@@ -11,11 +11,13 @@ import { MdDelete } from "react-icons/md";
 import { toast } from "react-hot-toast";
 
 import swal from "sweetalert";
+import { useRouter } from "next/navigation";
 
 const page = () => {
     const [foods, setFoods] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
         foodListFetchHandler();
@@ -126,7 +128,14 @@ const page = () => {
                                         <button className="view action-btn">
                                             <FaEye className="mr-1" /> view
                                         </button>
-                                        <button className="edit action-btn">
+                                        <button
+                                            className="edit action-btn"
+                                            onClick={() =>
+                                                router.push(
+                                                    `/resturant/dashboard/all-food/${food._id}`
+                                                )
+                                            }
+                                        >
                                             <FiEdit className="mr-1" /> edit
                                         </button>
                                         <button
