@@ -14,8 +14,10 @@ html {
 }
 
 :root {
-    --primary-clr: #eb4a4a;
-    --secondary-clr: #d82e2e;
+    /* --primary-clr: #eb4a4a;
+    --secondary-clr: #d82e2e; */
+    --primary-clr: #ff0844;
+    --secondary-clr: #ffb199;
     --accent-clr: #4d4d4d;
     --white-clr: #fff;
     --black-clr: #000;
