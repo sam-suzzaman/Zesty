@@ -1,0 +1,67 @@
+.resturants-container .content {
+    width: 100%;
+    max-width: 62.5rem;
+}
+.resturants-container .content > .hero-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 2.5rem;
+    text-transform: capitalize;
+    color: var(--primary-clr);
+}
+.resturants-container .content .search-form {
+    width: 100%;
+    position: relative;
+}
+
+.resturants-container .content .search-form .search-input {
+    outline: none;
+    border: 1px solid #d2d2d2;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-clr);
+    padding: 0.65rem 0.75rem;
+}
+
+.resturants-container .content .search-form .search-input.city-input {
+    width: 30%;
+    border-radius: 0.4rem 0 0 0.4rem;
+}
+.resturants-container .content .search-form .search-input.food-name-input {
+    width: 65%;
+    border-radius: 0 0.4rem 0.4rem 0;
+    border-left: 1px solid #d2d2d2;
+}
+
+.resturants-container .content .search-form .city-lists {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 13rem;
+    list-style: none;
+    padding: 0.75rem;
+    border-radius: 0 0 0.4rem 0.4rem;
+    opacity: 0;
+}
+.resturants-container .content .search-form .city-lists.active {
+    top: 35px;
+    opacity: 1;
+}
+.resturants-container .content .search-form .city-lists > .city {
+    border-bottom: 1px solid #d2d2d2;
+    padding-bottom: 0.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-clr);
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.resturants-container .content .search-form .city-lists > .city:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
