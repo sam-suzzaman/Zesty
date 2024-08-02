@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./style.css";
 
-const Hero = () => {
+const Hero = ({ setSearchInput, searchInput }) => {
     const [showLocation, setShowLocation] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState("");
     const [searchText, setSearchText] = useState("");
@@ -20,6 +20,7 @@ const Hero = () => {
         }
     };
 
+    // fetching all resturant's location
     const locationFetchHandler = async () => {
         const response = await fetch(
             "http://localhost:3000/api/resturant/cities"
@@ -33,17 +34,23 @@ const Hero = () => {
             setLocaltions(null);
         }
     };
-
     useEffect(() => {
         locationFetchHandler();
     }, []);
 
+    // closing location dropdown menu
     useEffect(() => {
         document.addEventListener("mousedown", handleClickOutside);
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
+
+    // setting searchInputs
+    useEffect(() => {
+        setSearchInput({ ...searchInput, selectedLocation, searchText });
+    }, [selectedLocation, searchText]);
+
     return (
         <>
             <div className="hero-container">
