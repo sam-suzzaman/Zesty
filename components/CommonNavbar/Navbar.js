@@ -1,10 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Logo from "../Shared/Logo/Logo";
 import "./style.css";
 import { usePathname } from "next/navigation";
+
+import { MdOutlineShoppingCart } from "react-icons/md";
+import CartList from "./CartList";
 
 const mainMenuData = [
     {
@@ -35,6 +38,22 @@ const mainMenuData = [
 ];
 const Navbar = () => {
     const pathName = usePathname();
+    const [showCart, setShowCart] = useState(false);
+    const cartRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (cartRef.current && !cartRef.current.contains(event.target)) {
+                setShowCart(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [cartRef]);
     return (
         <nav id="main-navbar">
             <div className="navbar-wrapper">
@@ -60,6 +79,24 @@ const Navbar = () => {
                                     </Link>
                                 );
                             })}
+                            <li className="cart-item">
+                                <MdOutlineShoppingCart
+                                    className="icon"
+                                    onClick={() => setShowCart(true)}
+                                />
+                                <span
+                                    className="value"
+                                    onClick={() => setShowCart(true)}
+                                >
+                                    0
+                                </span>
+
+                                {/* cart list */}
+                                <CartList
+                                    showCart={showCart}
+                                    cartRef={cartRef}
+                                />
+                            </li>
                         </ul>
                     </div>
                 </div>
