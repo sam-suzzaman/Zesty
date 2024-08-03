@@ -1,6 +1,6 @@
 .resturants-container .content {
     width: 100%;
-    max-width: 62.5rem;
+    max-width: 60rem;
 }
 .resturants-container .content > .hero-title {
     text-align: center;
@@ -18,10 +18,10 @@
 .resturants-container .content .search-form .search-input {
     outline: none;
     border: 1px solid #d2d2d2;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--accent-clr);
-    padding: 0.65rem 0.75rem;
+    padding: 0.65rem 1rem;
 }
 
 .resturants-container .content .search-form .search-input.city-input {

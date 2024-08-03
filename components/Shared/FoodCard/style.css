@@ -1,0 +1,157 @@
+.food-card {
+    box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem 1rem;
+}
+
+.food-card > .card-body .food-thumb {
+    width: 100%;
+    height: 12.5rem;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+.food-card > .card-body .food-thumb > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.food-card > .card-body .food-thumb > .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0.25rem;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.01)
+    );
+    opacity: 0;
+}
+.food-card:hover .food-thumb > .overlay {
+    opacity: 1;
+}
+.food-card > .card-body .food-thumb > .overlay > .icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 0.25rem;
+    color: var(--white-clr);
+    font-size: 1.6rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+.food-card > .card-body .food-thumb > .overlay > .icon:hover {
+    color: var(--primary-clr);
+}
+.food-card > .card-body .food-thumb > .overlay > .icon.active {
+    color: var(--primary-clr);
+}
+.food-card > .card-body .food-thumb > img {
+    width: 100%;
+    border-radius: 0.25rem;
+    object-fit: cover;
+}
+
+.food-card > .card-body .brand {
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 0.25rem;
+}
+
+.food-card > .card-body .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--black-clr);
+    opacity: 0.9;
+    margin-bottom: 0.75rem;
+    text-transform: capitalize;
+}
+
+.food-card > .card-body .resturant-profile {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.food-card > .card-body .resturant-profile .logo {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    margin-right: 0.35rem;
+}
+.food-card > .card-body .resturant-profile .logo > img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.food-card > .card-body .resturant-profile h3.name {
+    font-size: 0.85rem;
+    text-transform: capitalize;
+    font-weight: 700;
+    color: var(--accent-clr);
+}
+
+.food-card > .card-body .food-des {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--accent-clr);
+    text-align: justify;
+    text-overflow: ellipsis;
+    margin-top: 1rem;
+}
+.food-card > .card-body .food-des > .food-detail-link {
+    margin-left: 0.2rem;
+    font-weight: 600;
+    color: var(--secondary-clr);
+}
+.food-card > .card-body .food-des > .food-detail-link:hover {
+    color: var(--primary-clr);
+}
+
+.food-card > .card-footer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+.food-card > .card-footer > .price {
+    color: var(--accent-clr);
+    text-transform: capitalize;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.food-card > .card-footer > .price > .value {
+    font-weight: 700;
+    font-size: 1.9rem;
+    color: var(--primary-clr);
+}
+.food-list-row > .card-row .card-footer > .show-more-btn {
+    background-color: var(--secondary-clr);
+    width: 100%;
+    padding: 0.6rem 1rem;
+    text-align: center;
+    text-transform: capitalize;
+    border-radius: 0.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-clr);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.food-list-row > .card-row .card-footer > .show-more-btn > .icon {
+    font-size: 1.25rem;
+}
+
+.food-list-row > .card-row .card-footer > .show-more-btn:hover {
+    background-color: var(--primary-clr);
+    color: var(--white-clr);
+}

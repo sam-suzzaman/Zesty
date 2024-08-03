@@ -118,7 +118,10 @@ const ResturentList = ({ resturants }) => {
                                 </div>
                             </div>
                             <div className="card-footer">
-                                <Link href="/" className="show-more-btn">
+                                <Link
+                                    href={`/all-resturants/${item.resturantName}?id=${item._id}`}
+                                    className="show-more-btn"
+                                >
                                     explore foods
                                 </Link>
                             </div>

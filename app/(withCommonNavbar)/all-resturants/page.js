@@ -44,7 +44,7 @@ const AllResturantsPage = () => {
             // const url = `http://localhost:3000/api/resturant`;
             const response = await fetch(url);
             const result = await response.json();
-
+            console.log(result);
             if (result.status) {
                 setResturants({
                     ...resturants,

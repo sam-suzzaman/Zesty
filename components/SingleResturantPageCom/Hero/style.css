@@ -1,0 +1,76 @@
+.r-detail-hero-container {
+    background-image: url("./../../../assets/resturantHeroBG.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.6);
+    background-blend-mode: multiply;
+    width: 100%;
+    min-height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.r-detail-hero-container .content {
+    width: 100%;
+    max-width: 50rem;
+}
+.r-detail-hero-container .content > .hero-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 2.5rem;
+    text-transform: capitalize;
+    color: var(--primary-clr);
+}
+.r-detail-hero-container .content .search-form {
+    width: 100%;
+    position: relative;
+}
+
+.r-detail-hero-container .content .search-form .search-input {
+    outline: none;
+    border: 1px solid #d2d2d2;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-clr);
+    padding: 0.7rem 1.5rem;
+}
+
+.r-detail-hero-container .content .search-form .search-input.food-name-input {
+    width: 100%;
+    border-radius: 0.4rem;
+}
+
+.r-detail-hero-container .content .search-form .city-lists {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 13rem;
+    list-style: none;
+    padding: 0.75rem;
+    border-radius: 0 0 0.4rem 0.4rem;
+    opacity: 0;
+}
+.r-detail-hero-container .content .search-form .city-lists.active {
+    top: 35px;
+    opacity: 1;
+}
+.r-detail-hero-container .content .search-form .city-lists > .city {
+    border-bottom: 1px solid #d2d2d2;
+    padding-bottom: 0.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-clr);
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.r-detail-hero-container .content .search-form .city-lists > .city:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}

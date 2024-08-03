@@ -2,12 +2,24 @@ import connectDB from "@/lib/connectDB";
 import FoodModel from "@/model/FoodModel";
 import { NextResponse } from "next/server";
 
-// to fetch all foods of each resturents
+// fetch all foods of each resturents with search
 export async function GET(req, content) {
     const id = content.params.id;
     try {
         await connectDB();
-        const result = await FoodModel.find({ foodOfResturant: id });
+
+        const queryParams = req.nextUrl.searchParams;
+        const foodSearch = queryParams.get("foodName");
+        let result;
+
+        if (!foodSearch) {
+            result = await FoodModel.find({ foodOfResturant: id });
+        } else {
+            let query = {
+                foodTitle: { $regex: new RegExp(foodSearch, "i") },
+            };
+            result = await FoodModel.find(query);
+        }
 
         if (!result.length) {
             return NextResponse.json({
