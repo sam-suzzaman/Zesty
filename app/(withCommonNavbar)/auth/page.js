@@ -32,7 +32,7 @@ const page = () => {
                     <RiAdminLine className="icon" />
                     <h5 className="name"> resturant</h5>
                 </Link>
-                <Link href="/" className="auth-type">
+                <Link href="/user/auth" className="auth-type">
                     <FaRegUser className="icon" />
                     <h5 className="name"> user</h5>
                 </Link>

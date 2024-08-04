@@ -50,45 +50,45 @@ const LoginForm = ({ setIsShowLoginForm }) => {
             >
                 {/* form title row */}
                 <div className="auth-title-row">
-                    <h6 className="form-name">resturant</h6>
+                    <h6 className="form-name">customer</h6>
                     <h3 className="title">Back to Login</h3>
                 </div>
                 {/* input-1:resturant email */}
                 <div className="input-row">
-                    <label htmlFor="">resturant email address:</label>
+                    <label htmlFor="">customer email address:</label>
                     <input
                         type="email"
                         placeholder="Enter email address"
-                        {...register("resturantEmail", {
+                        {...register("customerEmail", {
                             required: {
                                 value: true,
-                                message: "Resturant email address is requird",
+                                message: "Customer email address is requird",
                             },
                         })}
                     />
-                    {errors?.resturantEmail && (
+                    {errors?.customerEmail && (
                         <span className="input-error">
-                            {errors?.resturantEmail?.message}
+                            {errors?.customerEmail?.message}
                         </span>
                     )}
                 </div>
 
                 {/* input-2:resturant password */}
                 <div className="input-row">
-                    <label htmlFor="">resturant password:</label>
+                    <label htmlFor="">customer password:</label>
                     <input
                         type={showPassword ? "text" : "password"}
                         placeholder="Enter resturant password"
-                        {...register("resturantPassword", {
+                        {...register("customerPassword", {
                             required: {
                                 value: true,
-                                message: "Restuant password is requird",
+                                message: "Customer password is requird",
                             },
                         })}
                     />
-                    {errors?.resturantPassword && (
+                    {errors?.customerPassword && (
                         <span className="input-error">
-                            {errors?.resturantPassword?.message}
+                            {errors?.customerPassword?.message}
                         </span>
                     )}
                 </div>
