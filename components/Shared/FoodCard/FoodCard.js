@@ -7,8 +7,11 @@ import Link from "next/link";
 import { IoIosArrowForward } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 import { IoIosHeart } from "react-icons/io";
+import { useCartContext } from "@/context/CartContext";
 
 const FoodCard = ({ food }) => {
+    const { state, handleItemAddToCart } = useCartContext();
+
     const [isFavourite, setIsFavoutire] = useState(false);
 
     return (
@@ -50,9 +53,15 @@ const FoodCard = ({ food }) => {
                 <div className="price">
                     <span className="value">{food?.foodPrice}</span> taka
                 </div>
-                <Link href="" className="show-more-btn">
+                <button
+                    className="show-more-btn"
+                    onClick={() => handleItemAddToCart(food)}
+                    disabled={state?.cart?.some(
+                        (item) => item._id === food._id
+                    )}
+                >
                     add to cart <IoIosArrowForward className="icon" />
-                </Link>
+                </button>
                 {/* <Link
                     href={`/all-resturants/${item.resturantName}?id=${item._id}`}
                     className="show-more-btn"

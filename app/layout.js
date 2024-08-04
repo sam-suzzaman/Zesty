@@ -1,3 +1,4 @@
+import CartContextWrapper from "@/context/CartContext";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 
@@ -7,7 +8,7 @@ export default function RootLayout({ children }) {
             <body>
                 {/* make sure to keep toaster above children */}
                 <Toaster position="top-center" />
-                {children}
+                <CartContextWrapper>{children}</CartContextWrapper>
             </body>
         </html>
     );

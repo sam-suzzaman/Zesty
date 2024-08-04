@@ -155,3 +155,9 @@
     background-color: var(--primary-clr);
     color: var(--white-clr);
 }
+
+.food-list-row > .card-row .card-footer > .show-more-btn:disabled {
+    cursor: not-allowed;
+    background-color: #eee;
+    color: #a7a7a7;
+}

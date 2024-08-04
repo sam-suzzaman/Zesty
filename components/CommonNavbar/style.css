@@ -78,12 +78,12 @@
     position: absolute;
     top: 60px;
     right: 2px;
-    width: 300px;
-    height: 350px;
+    width: 18.75rem;
+    max-height: 21.875rem;
     overflow-y: auto;
     background-color: #ffffff;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 0 0 0.5rem 0.5rem;
+    border-radius: 0.5rem;
     padding: 1rem;
     display: flex;
     flex-direction: column;

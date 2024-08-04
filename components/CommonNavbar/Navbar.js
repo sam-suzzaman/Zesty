@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 
 import { MdOutlineShoppingCart } from "react-icons/md";
 import CartList from "./CartList";
+import { useCartContext } from "@/context/CartContext";
 
 const mainMenuData = [
     {
@@ -37,6 +38,8 @@ const mainMenuData = [
     },
 ];
 const Navbar = () => {
+    const { state } = useCartContext();
+
     const pathName = usePathname();
     const [showCart, setShowCart] = useState(false);
     const cartRef = useRef(null);
@@ -54,6 +57,7 @@ const Navbar = () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [cartRef]);
+
     return (
         <nav id="main-navbar">
             <div className="navbar-wrapper">
@@ -88,7 +92,7 @@ const Navbar = () => {
                                     className="value"
                                     onClick={() => setShowCart(true)}
                                 >
-                                    0
+                                    {state?.cart?.length || 0}
                                 </span>
 
                                 {/* cart list */}

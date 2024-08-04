@@ -1,3 +1,4 @@
+import { useCartContext } from "@/context/CartContext";
 import Link from "next/link";
 import React from "react";
 
@@ -31,23 +32,36 @@ const items = [
 ];
 
 const CartList = ({ showCart, cartRef }) => {
+    const { state, handleRemoveItemFromCart } = useCartContext();
+
     return (
         <div className={`cart-menu ${showCart && "show"}`} ref={cartRef}>
             <div className="top-row">
-                <h6 className="title">your cart</h6>
+                <h6 className="title">your cart: {state?.cart?.length || 0}</h6>
 
                 <div className="list">
-                    {items?.map((item) => (
-                        <li className="item" key={item._id}>
-                            <img src={item.img} alt="thumb" className="left" />
+                    {state?.cart?.map((food) => (
+                        <li className="item" key={food?._id}>
+                            <img
+                                src={food?.foodThumbnail}
+                                alt="thumb"
+                                className="left"
+                            />
                             <div className="center">
-                                <h4 className="title">{item.title}</h4>
+                                <h4 className="title">{food?.foodTitle}</h4>
                                 <p className="price">
                                     Price:
-                                    <span className="fancy">{item.price}</span>
+                                    <span className="fancy">
+                                        {food?.foodPrice}
+                                    </span>
                                 </p>
                             </div>
-                            <button className="right">
+                            <button
+                                className="right"
+                                onClick={() =>
+                                    handleRemoveItemFromCart(food?._id)
+                                }
+                            >
                                 <MdDelete className="icon" />
                             </button>
                         </li>
