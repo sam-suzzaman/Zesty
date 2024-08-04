@@ -69,7 +69,7 @@ const CartList = ({ showCart, cartRef }) => {
                 </div>
             </div>
             <div className="bottom-row">
-                <Link className="checkoutBtn" href="/">
+                <Link className="checkoutBtn" href="/cart">
                     checkout
                 </Link>
             </div>

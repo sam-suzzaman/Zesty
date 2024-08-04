@@ -9,8 +9,11 @@ const CartContext = createContext();
 const initialState = {
     loading: false,
     cart: [],
-    totalAmount: 0,
-    totalPrice: 0,
+    // totalAmount: 0,
+    // totalPrice: 0,
+    totalQuantity: 0,
+    subTotalPrice: 0,
+    finalPrice: 0,
 };
 
 const CartContextWrapper = ({ children }) => {
@@ -39,8 +42,29 @@ const CartContextWrapper = ({ children }) => {
         dispatch({ type: "REMOVE_ITEM_FROM_CART", ID: id });
     };
 
+    // 03.Increase item quantity
+    const handleIncreaseItemQuantity = (id) => {
+        dispatch({ type: "INCREASE_ITEM_QUANTITY", ID: id });
+    };
+
+    // 04.decrease item quantity
+    const handleDecreaseItemQuantity = (id) => {
+        dispatch({ type: "DECREASE_ITEM_QUANTITY", ID: id });
+    };
+
+    // 05. Final Calcuation
+    useEffect(() => {
+        dispatch({ type: "GET_TOTAL" });
+    }, [state.cart]);
+
     // Passing Prop Object
-    const value = { state, handleItemAddToCart, handleRemoveItemFromCart };
+    const value = {
+        state,
+        handleItemAddToCart,
+        handleRemoveItemFromCart,
+        handleIncreaseItemQuantity,
+        handleDecreaseItemQuantity,
+    };
 
     return (
         <CartContext.Provider value={value}>{children}</CartContext.Provider>

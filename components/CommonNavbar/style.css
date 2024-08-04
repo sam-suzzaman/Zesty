@@ -89,11 +89,13 @@
     flex-direction: column;
     justify-content: space-between;
     opacity: 0;
+    visibility: hidden;
 }
 
 .navbar-container .nav-right .main-menu .cart-item > .cart-menu.show {
     top: 53px;
     opacity: 1;
+    visibility: visible;
 }
 .navbar-container .main-menu .cart-item > .cart-menu .checkoutBtn {
     width: 100%;

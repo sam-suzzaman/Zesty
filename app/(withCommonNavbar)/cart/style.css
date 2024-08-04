@@ -1,0 +1,317 @@
+.cart-page-wrapper {
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-page-wrapper .cart-page-container {
+    padding: 2.5rem 1.5rem;
+    width: 100%;
+    max-width: 78.175rem;
+}
+.cart-page-container > .page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    text-align: center;
+    color: var(--primary-clr);
+}
+
+.cart-page-container > .cart-card-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.75rem;
+    margin-top: 2rem;
+}
+
+/* ============================
+Cart Left
+==============================*/
+.cart-card-container > .cart-left,
+.cart-right {
+    background-color: #fff;
+    padding: 1.25rem 1rem;
+    border-radius: 0.5rem;
+}
+.cart-card-container > .cart-left {
+    padding: 1.5rem 1.25rem;
+}
+.cart-card-container > .cart-right {
+    height: fit-content;
+}
+
+/* cart table style */
+.cart-left > .cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.cart-left > .cart-table > thead {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--accent-clr);
+    text-transform: capitalize;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.cart-left > .cart-table > thead > td {
+    padding-bottom: 0.35rem;
+}
+.cart-left > .cart-table > thead > td:nth-child(5) {
+    width: 47%;
+}
+.cart-left > .cart-table > thead > td:nth-child(2) {
+    width: 16%;
+}
+.cart-left > .cart-table > thead > td:nth-child(3) {
+    width: 10%;
+}
+.cart-left > .cart-table > thead > td:nth-child(4) {
+    width: 11%;
+}
+.cart-left > .cart-table > thead > td:nth-child(5) {
+    width: 4%;
+}
+.cart-left > .cart-table > tbody > tr > td {
+    padding: 0.75rem 0;
+}
+.cart-left > .cart-table > tbody > tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.cart-left > .cart-table > tbody > tr:last-child {
+    border-bottom: none;
+}
+
+/* col-1 */
+.cart-left > .cart-table > tbody > tr > td > .food-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.7rem;
+}
+.cart-left > .cart-table > tbody > tr > td > .food-info > .thumb {
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 0.5rem;
+}
+.cart-left > .cart-table > tbody > tr > td > .food-info > .col > .title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: var(--accent-clr);
+    margin-bottom: 1px;
+}
+.cart-left > .cart-table > tbody > tr > td > .food-info > .col > .quantity {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: var(--accent-clr);
+    opacity: 0.8;
+}
+
+/* controllers button */
+.cart-left > .cart-table > tbody > tr > td > .controllers {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+}
+.cart-left > .cart-table > tbody > tr > td > .controllers > .control-btn {
+    font-size: 0.7rem;
+    font-weight: 700;
+    background-color: var(--secondary-clr);
+    color: var(--primary-clr);
+    width: 25px;
+    height: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.25rem;
+}
+
+.cart-left > .cart-table > tbody > tr > td > .controllers > .control-btn:hover {
+    background-color: var(--primary-clr);
+    color: var(--white-clr);
+}
+.cart-left
+    > .cart-table
+    > tbody
+    > tr
+    > td
+    > .controllers
+    > .control-btn:disabled {
+    background-color: #eee;
+    color: #b5b5b5;
+    cursor: not-allowed;
+}
+.cart-left > .cart-table > tbody > tr > td > .controllers > .display {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--primary-clr);
+    width: 25px;
+    height: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+}
+
+/* Price */
+.cart-left > .cart-table > tbody > tr > td > .price {
+    width: 100%;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--accent-clr);
+    text-transform: capitalize;
+}
+.cart-left > .cart-table > tbody > tr > td > .price > .fancy {
+    font-size: 0.8rem;
+    margin-right: 2px;
+}
+
+/* total */
+.cart-left > .cart-table > tbody > tr > td > .total {
+    width: 100%;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--accent-clr);
+    text-transform: capitalize;
+}
+.cart-left > .cart-table > tbody > tr > td > .total > .fancy {
+    font-size: 0.8rem;
+    margin-right: 2px;
+}
+
+/* remove btn */
+.cart-left > .cart-table > tbody > tr > td > .remove-btn {
+    font-size: 1.15rem;
+    color: var(--accent-clr);
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 25px;
+    height: 25px;
+    border-radius: 0.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart-left > .cart-table > tbody > tr > td > .remove-btn:hover {
+    color: var(--white-clr);
+    background-color: var(--primary-clr);
+}
+
+/* ============================
+Cart Right
+==============================*/
+.cart-card-container > .cart-right > .title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: var(--accent-clr);
+}
+.cart-card-container .cart-right > .cost-row {
+    margin-top: 1.25rem;
+}
+.cart-card-container .cart-right > .cost-row > .sub-total {
+    display: flex;
+    justify-content: space-between;
+    align-content: ;
+    font-size: 0.8rem;
+    color: var(--accent-clr);
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-bottom: 0.35rem;
+}
+.cart-card-container .cart-right > .cost-row > .sub-total > .value > .tk {
+    font-size: 0.6rem;
+    margin-left: 0.25rem;
+    text-transform: uppercase;
+}
+
+.cart-card-container .cart-right > .cost-row > .total {
+    border-top: 1px solid rgba(0, 0, 0, 0.25);
+    margin-top: 0.5rem;
+    padding-top: 0.25rem;
+}
+.cart-card-container .cart-right > .cost-row > .total > .value {
+    color: var(--primary-clr);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+.cart-card-container .cart-right > .cost-row > .total > .value > .tk {
+    color: var(--accent-clr);
+}
+
+/* checkout btn row */
+
+.cart-card-container > .cart-right > .cart-btn-row {
+    margin-top: 3rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.cart-card-container > .cart-right > .cart-btn-row > .btn {
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    padding: 0.4rem 0.5rem;
+    border-radius: 0.25rem;
+    text-align: center;
+    cursor: pointer;
+}
+.cart-card-container > .cart-right > .cart-btn-row > .btn.checkout {
+    background-color: var(--secondary-clr);
+    color: var(--primary-clr);
+}
+.cart-card-container > .cart-right > .cart-btn-row > .btn.checkout:hover {
+    background-color: var(--primary-clr);
+    color: var(--white-clr);
+}
+.cart-card-container > .cart-right > .cart-btn-row > .btn.checkout.disabled {
+    background-color: #e7e7e7;
+    color: #8d8d8d;
+    cursor: not-allowed;
+}
+.cart-card-container > .cart-right > .cart-btn-row > .btn.shop {
+    background-color: var(--accent-clr);
+    color: var(--white-clr);
+}
+.cart-card-container > .cart-right > .cart-btn-row > .btn.shop:hover {
+    background-color: var(--black-clr);
+}
+
+/* Emtpty table info */
+.cart-card-container > .cart-left > .empty-table {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cart-card-container > .cart-left > .empty-table > .title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: var(--primary-clr);
+}
+.cart-card-container > .cart-left > .empty-table > .info {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--accent-clr);
+    margin-top: 0.75rem;
+}
+.cart-card-container > .cart-left > .empty-table > .back-btn {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-clr);
+    background-color: var(--secondary-clr);
+    padding: 0.5rem 2rem;
+    border-radius: 0.25rem;
+    text-transform: capitalize;
+    margin-top: 1.35rem;
+}
+.cart-card-container > .cart-left > .empty-table > .back-btn:hover {
+    background-color: var(--primary-clr);
+    color: var(--white-clr);
+}
