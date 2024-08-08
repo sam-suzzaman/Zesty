@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import CartList from "./CartList";
 import { useCartContext } from "@/context/CartContext";
+import { useSession } from "next-auth/react";
 
 const mainMenuData = [
     {
@@ -43,6 +44,9 @@ const Navbar = () => {
     const pathName = usePathname();
     const [showCart, setShowCart] = useState(false);
     const cartRef = useRef(null);
+
+    // loggedin user data
+    const { status, data } = useSession();
 
     useEffect(() => {
         const handleClickOutside = (event) => {

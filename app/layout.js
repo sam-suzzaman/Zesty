@@ -1,6 +1,7 @@
 import CartContextWrapper from "@/context/CartContext";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import AuthProvider from "@/services/AuthProvider";
 
 export default function RootLayout({ children }) {
     return (
@@ -8,7 +9,9 @@ export default function RootLayout({ children }) {
             <body>
                 {/* make sure to keep toaster above children */}
                 <Toaster position="top-center" />
-                <CartContextWrapper>{children}</CartContextWrapper>
+                <AuthProvider>
+                    <CartContextWrapper>{children}</CartContextWrapper>
+                </AuthProvider>
             </body>
         </html>
     );

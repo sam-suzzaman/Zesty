@@ -1,14 +1,14 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 import React, { useState } from "react";
 
 import { useForm } from "react-hook-form";
 
 import { toast } from "react-hot-toast";
 
-const LoginForm = ({ setIsShowLoginForm }) => {
+const LoginForm = ({ setIsShowLoginForm, pathHistory }) => {
     const [showPassword, setShowPassword] = useState(false);
-    const route = useRouter();
+    const [isLoading, setIsLoading] = useState(false);
 
     const {
         register,
@@ -18,28 +18,47 @@ const LoginForm = ({ setIsShowLoginForm }) => {
     } = useForm();
 
     const onSubmit = async (data) => {
-        const options = {
-            method: "POST",
-            body: JSON.stringify({
-                ...data,
-                login: true,
-            }),
-        };
-        let response = await fetch(
-            "http://localhost:3000/api/resturant/auth",
-            options
-        );
-        const result = await response.json();
-        if (result.status) {
-            console.log(result);
-            delete result.result.password;
-            localStorage.setItem("user", JSON.stringify(result.result));
-            toast.success("Successfully Login!");
-            route.push("/resturant/dashboard");
-        } else {
-            console.log(result);
-            toast.error(`Login failed (${result?.message})`);
+        setIsLoading(true);
+        try {
+            const response = await signIn("credentials", {
+                email: data.email,
+                password: data.password,
+                redirect: false,
+                // callbackUrl: pathHistory ? pathHistory : "/",
+            });
+            console.log(response);
+            if (response.ok) {
+                toast.success("Successfully Login!");
+            } else {
+                toast.error(`Login failed (${response?.error})`);
+            }
+        } catch (error) {
+            toast.error(`Login failed (${error?.message || error})`);
+            console.log(error);
         }
+        setIsLoading(false);
+        // const options = {
+        //     method: "POST",
+        //     body: JSON.stringify({
+        //         ...data,
+        //         login: true,
+        //     }),
+        // };
+        // let response = await fetch(
+        //     "http://localhost:3000/api/resturant/auth",
+        //     options
+        // );
+        // const result = await response.json();
+        // if (result.status) {
+        //     console.log(result);
+        //     delete result.result.password;
+        //     localStorage.setItem("user", JSON.stringify(result.result));
+        //     toast.success("Successfully Login!");
+        //     route.push("/resturant/dashboard");
+        // } else {
+        //     console.log(result);
+        //     toast.error(`Login failed (${result?.message})`);
+        // }
     };
     return (
         <div className="auth-form-container">
@@ -59,16 +78,16 @@ const LoginForm = ({ setIsShowLoginForm }) => {
                     <input
                         type="email"
                         placeholder="Enter email address"
-                        {...register("customerEmail", {
+                        {...register("email", {
                             required: {
                                 value: true,
                                 message: "Customer email address is requird",
                             },
                         })}
                     />
-                    {errors?.customerEmail && (
+                    {errors?.email && (
                         <span className="input-error">
-                            {errors?.customerEmail?.message}
+                            {errors?.email?.message}
                         </span>
                     )}
                 </div>
@@ -79,16 +98,16 @@ const LoginForm = ({ setIsShowLoginForm }) => {
                     <input
                         type={showPassword ? "text" : "password"}
                         placeholder="Enter resturant password"
-                        {...register("customerPassword", {
+                        {...register("password", {
                             required: {
                                 value: true,
                                 message: "Customer password is requird",
                             },
                         })}
                     />
-                    {errors?.customerPassword && (
+                    {errors?.password && (
                         <span className="input-error">
-                            {errors?.customerPassword?.message}
+                            {errors?.password?.message}
                         </span>
                     )}
                 </div>
@@ -102,9 +121,12 @@ const LoginForm = ({ setIsShowLoginForm }) => {
                     />
                     <label htmlFor="togglePassword">show password</label>
                 </div>
+
                 {/* submit btn */}
                 <div className="input-row auth-btn-row">
-                    <button type="submit">login</button>
+                    <button type="submit" disabled={isLoading}>
+                        {isLoading ? "loading..." : "login"}
+                    </button>
                 </div>
 
                 <p className="form-toggler-text">
