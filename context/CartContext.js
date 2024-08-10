@@ -52,7 +52,12 @@ const CartContextWrapper = ({ children }) => {
         dispatch({ type: "DECREASE_ITEM_QUANTITY", ID: id });
     };
 
-    // 05. Final Calcuation
+    // 05.Clear cart
+    const handleClearCart = () => {
+        dispatch({ type: "CLEAR_CART" });
+    };
+
+    // 06. Final Calcuation
     useEffect(() => {
         dispatch({ type: "GET_TOTAL" });
     }, [state.cart]);
@@ -64,6 +69,7 @@ const CartContextWrapper = ({ children }) => {
         handleRemoveItemFromCart,
         handleIncreaseItemQuantity,
         handleDecreaseItemQuantity,
+        handleClearCart,
     };
 
     return (

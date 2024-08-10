@@ -54,7 +54,7 @@ const FoodCard = ({ food }) => {
                     <span className="value">{food?.foodPrice}</span> taka
                 </div>
                 <button
-                    className="show-more-btn"
+                    className="add-to-cart-btn"
                     onClick={() => handleItemAddToCart(food)}
                     disabled={state?.cart?.some(
                         (item) => item._id === food._id

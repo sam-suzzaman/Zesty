@@ -133,7 +133,7 @@
     font-size: 1.9rem;
     color: var(--primary-clr);
 }
-.food-list-row > .card-row .card-footer > .show-more-btn {
+.food-card > .card-footer > .add-to-cart-btn {
     background-color: var(--secondary-clr);
     width: 100%;
     padding: 0.6rem 1rem;
@@ -147,16 +147,16 @@
     justify-content: space-between;
     align-items: center;
 }
-.food-list-row > .card-row .card-footer > .show-more-btn > .icon {
+.food-card > .card-footer > .add-to-cart-btn > .icon {
     font-size: 1.25rem;
 }
 
-.food-list-row > .card-row .card-footer > .show-more-btn:hover {
+.food-card > .card-footer > .add-to-cart-btn:hover {
     background-color: var(--primary-clr);
     color: var(--white-clr);
 }
 
-.food-list-row > .card-row .card-footer > .show-more-btn:disabled {
+.food-card > .card-footer > .add-to-cart-btn:disabled {
     cursor: not-allowed;
     background-color: #eee;
     color: #a7a7a7;

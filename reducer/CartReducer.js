@@ -37,8 +37,9 @@ const reducerHandler = (prevState, action) => {
             localStorage.setItem("zesty-cart", JSON.stringify(updatedCart));
             return { ...prevState, cart: updatedCart };
 
-        // case "CLEAR_CART":
-        //     return;
+        case "CLEAR_CART":
+            localStorage.setItem("zesty-cart", JSON.stringify([]));
+            return { ...prevState, cart: [] };
 
         case "INCREASE_ITEM_QUANTITY":
             let updatedFoodQuantityCart = prevState.cart.map((food) => {

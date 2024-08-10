@@ -8,7 +8,7 @@ import { useSession } from "next-auth/react";
 import Loading from "@/components/Shared/Loading/Loading";
 
 const OrderPage = () => {
-    const { state } = useCartContext();
+    const { state, handleClearCart } = useCartContext();
     const { status, data: User } = useSession();
     const [navbarHeight, setNavbarHeight] = useState(0);
     const [paymentMethod, setPaymentMethod] = useState("");
@@ -42,13 +42,13 @@ const OrderPage = () => {
                 toast.error("Please select a Payment Method");
             } else {
                 const items = state?.cart?.map((food) => ({
-                    _id: food._id,
+                    food: food._id,
                     quantity: food.quantity,
                     price: food.foodPrice,
                 }));
 
                 const order = {
-                    user: User?.user?._id,
+                    customer: User?.user?._id,
                     items,
                     totalPrice: state?.finalPrice,
                     delivaryAddress,
@@ -58,7 +58,23 @@ const OrderPage = () => {
                     shippingMethod,
                     paymentMethod,
                 };
-                console.log(order);
+
+                const options = {
+                    method: "POST",
+                    body: JSON.stringify(order),
+                };
+                const response = await fetch(
+                    "http://localhost:3000/api/order",
+                    options
+                );
+                const result = await response.json();
+
+                if (result?.status) {
+                    handleClearCart();
+                    toast.success(result?.message);
+                } else {
+                    toast.error(result?.message);
+                }
             }
         } else {
             return;
@@ -366,7 +382,11 @@ const OrderPage = () => {
                             </div>
 
                             {/* submit */}
-                            <button className="place-order-btn" type="submit">
+                            <button
+                                className="place-order-btn"
+                                type="submit"
+                                disabled={!state?.cart?.length}
+                            >
                                 place order
                             </button>
                         </form>

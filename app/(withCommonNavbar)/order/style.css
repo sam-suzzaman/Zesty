@@ -146,6 +146,11 @@ Left COl
     background-color: var(--primary-clr);
     color: var(--white-clr);
 }
+.order-page-container > .main-row > .left-col .place-order-btn:disabled {
+    background-color: #ccc;
+    color: var(--accent-clr);
+    cursor: not-allowed;
+}
 
 /* ============================
 Right COl
