@@ -39,6 +39,31 @@
     border-bottom: 2px solid var(--primary-clr);
 }
 
+/* auth btn */
+.navbar-container .nav-right .main-menu .auth-btn-item .auth-btn {
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    transition: all 0.3s linear;
+    padding: 0.2rem 0.75rem;
+    border-radius: 0.25rem;
+    margin-left: 0.5rem;
+}
+
+.navbar-container .nav-right .main-menu .auth-btn-item .auth-btn.logout-btn {
+    border: 1px solid var(--primary-clr);
+    color: var(--accent-clr);
+}
+.navbar-container .nav-right .main-menu .auth-btn-item .auth-btn.login-btn {
+    border: 1px solid var(--secondary-clr);
+    color: var(--primary-clr);
+    background-color: var(--secondary-clr);
+}
+.navbar-container .nav-right .main-menu .auth-btn-item .auth-btn:hover {
+    background-color: var(--primary-clr);
+    color: var(--white-clr);
+}
+
 /* Cart item style */
 .navbar-container .nav-right .main-menu .cart-item {
     font-size: 1.75rem;

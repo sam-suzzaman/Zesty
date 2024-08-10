@@ -81,12 +81,12 @@ const CartPage = () => {
                             </div>
                             <div className="cart-btn-row">
                                 <Link
-                                    href="/"
+                                    href="/order"
                                     className={`btn checkout ${
                                         state?.cart?.length == 0 && "disabled"
                                     }`}
                                 >
-                                    checkout now
+                                    order now
                                 </Link>
                                 {state?.cart?.length ? (
                                     <Link href="/" className="btn shop">

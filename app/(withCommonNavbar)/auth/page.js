@@ -7,9 +7,13 @@ import "./style.css";
 import { RiAdminLine } from "react-icons/ri";
 import { FaRegUser } from "react-icons/fa";
 import { FaUserShield } from "react-icons/fa6";
+import { useSearchParams } from "next/navigation";
 
 const page = () => {
     const [navbarHeight, setNavbarHeight] = useState(0);
+
+    const searchParams = useSearchParams();
+    const pathHistory = searchParams.get("redirect");
 
     useEffect(() => {
         const navbar = document.getElementById("main-navbar");
@@ -32,7 +36,10 @@ const page = () => {
                     <RiAdminLine className="icon" />
                     <h5 className="name"> resturant</h5>
                 </Link>
-                <Link href="/user/auth" className="auth-type">
+                <Link
+                    href={`/user/auth?redirect=${encodeURI(pathHistory)}`}
+                    className="auth-type"
+                >
                     <FaRegUser className="icon" />
                     <h5 className="name"> user</h5>
                 </Link>

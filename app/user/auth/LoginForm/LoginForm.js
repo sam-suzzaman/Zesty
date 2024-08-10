@@ -19,14 +19,18 @@ const LoginForm = ({ setIsShowLoginForm, pathHistory }) => {
 
     const onSubmit = async (data) => {
         setIsLoading(true);
+
         try {
+            let url = pathHistory ? pathHistory : "/";
+            console.log(url);
             const response = await signIn("credentials", {
                 email: data.email,
                 password: data.password,
-                redirect: false,
-                // callbackUrl: pathHistory ? pathHistory : "/",
+                redirect: true,
+                callbackUrl: url,
             });
-            console.log(response);
+            // console.log(response);
+
             if (response.ok) {
                 toast.success("Successfully Login!");
             } else {

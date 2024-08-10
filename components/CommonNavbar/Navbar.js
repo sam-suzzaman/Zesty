@@ -1,66 +1,40 @@
 "use client";
 
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import Logo from "../Shared/Logo/Logo";
 import "./style.css";
-import { usePathname } from "next/navigation";
 
-import { MdOutlineShoppingCart } from "react-icons/md";
-import CartList from "./CartList";
-import { useCartContext } from "@/context/CartContext";
+import UserMenu from "./UserMenu";
+import ResturantMenu from "./ResturantMenu";
 import { useSession } from "next-auth/react";
+import CommonMenu from "./CommonMenu";
 
-const mainMenuData = [
-    {
-        _id: 1,
-        name: "home",
-        href: "/",
-    },
-    {
-        _id: 2,
-        name: "foods",
-        href: "/food-items",
-    },
-    {
-        _id: 3,
-        name: "resturants",
-        href: "/all-resturants",
-    },
-    {
-        _id: 4,
-        name: "dashboard",
-        href: "/resturant/dashboard",
-    },
-    {
-        _id: 5,
-        name: "login",
-        href: "/auth",
-    },
-];
+// const mainMenuData = [
+//     {
+//         _id: 1,
+//         name: "home",
+//         href: "/",
+//     },
+//     {
+//         _id: 2,
+//         name: "foods",
+//         href: "/food-items",
+//     },
+//     {
+//         _id: 3,
+//         name: "resturants",
+//         href: "/all-resturants",
+//     },
+//     {
+//         _id: 4,
+//         name: "dashboard",
+//         href: "/resturant/dashboard",
+//     },
+// ];
 const Navbar = () => {
-    const { state } = useCartContext();
-
-    const pathName = usePathname();
-    const [showCart, setShowCart] = useState(false);
-    const cartRef = useRef(null);
-
     // loggedin user data
     const { status, data } = useSession();
-
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (cartRef.current && !cartRef.current.contains(event.target)) {
-                setShowCart(false);
-            }
-        };
-
-        document.addEventListener("mousedown", handleClickOutside);
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [cartRef]);
 
     return (
         <nav id="main-navbar">
@@ -72,40 +46,9 @@ const Navbar = () => {
                         </Link>
                     </div>
                     <div className="nav-right">
-                        <ul className="main-menu">
-                            {mainMenuData?.map((item) => {
-                                const isActive = pathName === item.href;
-                                return (
-                                    <Link
-                                        key={item._id}
-                                        href={item.href}
-                                        className={`main-menu-link ${
-                                            isActive && "active"
-                                        }`}
-                                    >
-                                        {item.name}
-                                    </Link>
-                                );
-                            })}
-                            <li className="cart-item">
-                                <MdOutlineShoppingCart
-                                    className="icon"
-                                    onClick={() => setShowCart(true)}
-                                />
-                                <span
-                                    className="value"
-                                    onClick={() => setShowCart(true)}
-                                >
-                                    {state?.cart?.length || 0}
-                                </span>
-
-                                {/* cart list */}
-                                <CartList
-                                    showCart={showCart}
-                                    cartRef={cartRef}
-                                />
-                            </li>
-                        </ul>
+                        {!data?.user?.role && <CommonMenu />}
+                        {data?.user?.role == "user" && <UserMenu />}
+                        {data?.user?.role == "resturant" && <ResturantMenu />}
                     </div>
                 </div>
             </div>
