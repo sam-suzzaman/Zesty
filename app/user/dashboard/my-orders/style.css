@@ -1,0 +1,127 @@
+.user-order-page-wrapper > .user-order-table-container {
+    margin-top: 2rem;
+    overflow-x: auto;
+}
+
+.user-order-page-wrapper .user-order-table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 800px;
+}
+
+.user-order-page-wrapper .user-order-table th:nth-child(1) {
+    width: 12%;
+}
+.user-order-page-wrapper .user-order-table th:nth-child(2) {
+    width: 9%;
+}
+.user-order-page-wrapper .user-order-table th:nth-child(3) {
+    width: 12%;
+}
+.user-order-page-wrapper .user-order-table th:nth-child(4) {
+    width: 8%;
+}
+.user-order-page-wrapper .user-order-table th:nth-child(5) {
+    width: 18%;
+}
+
+.user-order-page-wrapper .user-order-table thead tr {
+    background-color: var(--primary-clr);
+    color: var(--white-clr);
+}
+.user-order-page-wrapper .user-order-table thead tr th {
+    border-right: 1px solid #ff9e9e;
+}
+
+.user-order-page-wrapper .user-order-table tbody tr:nth-child(even) {
+    background-color: #edebeb;
+}
+
+.user-order-page-wrapper .user-order-table th,
+.user-order-page-wrapper .user-order-table td {
+    padding: 0.5rem;
+    text-align: center;
+}
+.user-order-page-wrapper .user-order-table td {
+    border-right: 1px solid #ddd;
+}
+
+.user-order-page-wrapper .user-order-table th {
+    font-size: 0.85em;
+    letter-spacing: 0.1em;
+    text-transform: capitalize;
+}
+.user-order-page-wrapper .user-order-table tr td {
+    font-size: 0.8em;
+    font-weight: 600;
+    color: var(--accent-clr);
+}
+
+.user-order-page-wrapper .user-order-table tr td span.currency {
+    font-size: 0.75em;
+    font-weight: 700;
+    color: var(--accent-clr);
+    margin-left: 2px;
+}
+
+.user-order-page-wrapper .user-order-table tr td span.badge {
+    display: inline-block;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    font-weight: 400;
+    padding: 1px 0.45rem;
+    border-radius: 0.25rem;
+}
+
+.user-order-table tr td span.badge.pending {
+    background-color: #ffd79a;
+    color: #462200;
+}
+.user-order-table tr td span.badge.delivered {
+    background-color: #a7ffd0;
+    color: #06391e;
+}
+.user-order-table tr td span.badge.cancel {
+    background-color: #ffbdb4;
+    color: #bf0101;
+}
+
+/* action button */
+.user-order-page-wrapper .action-row {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.user-order-page-wrapper .action-btn {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-transform: capitalize;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    padding: 0.12rem 0.625rem;
+    border-radius: 0.25rem;
+}
+
+.user-order-page-wrapper .action-btn.view {
+    background-color: #b4ffb4;
+    color: #002500;
+}
+.user-order-page-wrapper .action-btn.view:hover {
+    background-color: #41db41cf;
+    color: #002500;
+}
+
+.user-order-page-wrapper .action-btn.delete {
+    background-color: #ffb6b6;
+    color: #000;
+}
+.user-order-page-wrapper .action-btn.delete:hover {
+    background-color: #b62626;
+    color: #fff;
+}

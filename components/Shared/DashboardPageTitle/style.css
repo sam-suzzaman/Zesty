@@ -1,0 +1,16 @@
+.dashboard-page-title-row .dashboard-page-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    color: var(--accent-clr);
+    line-height: 1.5rem;
+}
+
+.dashboard-page-title-row .dashboard-page-subtitle {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--accent-clr);
+    opacity: 0.8;
+    margin-top: 0.4rem;
+}

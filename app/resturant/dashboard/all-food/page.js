@@ -12,6 +12,7 @@ import { toast } from "react-hot-toast";
 
 import swal from "sweetalert";
 import { useRouter } from "next/navigation";
+import DashboardPageTitle from "@/components/Shared/DashboardPageTitle/DashboardPageTitle";
 
 const page = () => {
     const [foods, setFoods] = useState(null);
@@ -87,12 +88,10 @@ const page = () => {
     }
     return (
         <div className="manage-food-page-wrapper">
-            <div className="page-title-row">
-                <h3 className="title">manage food</h3>
-                <p className="subtitle">
-                    Manage your food items of your resturant
-                </p>
-            </div>
+            <DashboardPageTitle
+                title="manage food"
+                subtitle="Manage your food items of your resturant"
+            />
 
             {/* food table */}
             <div className="food-list-table">

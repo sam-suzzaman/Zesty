@@ -34,12 +34,12 @@ const navData = [
         href: "/user/dashboard/profile",
         icon: <FaUserLarge className="icon" />,
     },
-    // {
-    //     _id: 3,
-    //     name: "add food",
-    //     href: "/resturant/dashboard/add-food",
-    //     icon: <MdOutlineAddPhotoAlternate className="icon" />,
-    // },
+    {
+        _id: 3,
+        name: "my orders",
+        href: "/user/dashboard/my-orders",
+        icon: <MdOutlineAddPhotoAlternate className="icon" />,
+    },
     // {
     //     _id: 4,
     //     name: "manage foods",
