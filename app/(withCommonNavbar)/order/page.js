@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import Loading from "@/components/Shared/Loading/Loading";
+import { useRouter } from "next/navigation";
 
 const OrderPage = () => {
     const { state, handleClearCart } = useCartContext();
@@ -13,6 +14,7 @@ const OrderPage = () => {
     const [navbarHeight, setNavbarHeight] = useState(0);
     const [paymentMethod, setPaymentMethod] = useState("");
     const [shippingMethod, setShippingMethod] = useState("");
+    const router = useRouter();
 
     const {
         register,
@@ -72,6 +74,7 @@ const OrderPage = () => {
                 if (result?.status) {
                     handleClearCart();
                     toast.success(result?.message);
+                    router.push("/user/dashboard/my-orders");
                 } else {
                     toast.error(result?.message);
                 }

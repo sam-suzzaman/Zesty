@@ -2,16 +2,18 @@ import OrderModel from "@/model/OrderModel";
 import FoodModel from "@/model/FoodModel";
 import UserModel from "@/model/UserModel";
 import { NextResponse } from "next/server";
+import connectDB from "@/lib/connectDB";
 
 // get user's all orders
 export async function GET(req, content) {
     const ID = content.params.userOrder;
     try {
+        connectDB();
         if (!ID) {
             return NextResponse.json({
                 status: false,
                 message: "Operation failed",
-                result: "user not found",
+                result: "Invalid user ID",
             });
         } else {
             const orders = await OrderModel.find({ customer: ID })
