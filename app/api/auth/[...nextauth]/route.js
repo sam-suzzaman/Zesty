@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 
 // const { NextResponse } = require("next/server");
 
-const authOptions = {
+export const authOptions = {
     secret: process.env.NEXT_AUTH_SECRET,
     session: {
         strategy: "jwt",

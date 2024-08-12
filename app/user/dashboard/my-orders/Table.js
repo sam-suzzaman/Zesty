@@ -12,6 +12,20 @@ const MyOrderTable = ({ setIsShowModal, setDetailFoodId, orders }) => {
         setIsShowModal(true);
     };
 
+    const handleCancelOrder = async (id) => {
+        const options = {
+            method: "PATCH",
+            body: JSON.stringify({ status: "CANCELLED" }),
+        };
+        const response = await fetch(
+            `http://localhost:3000/api/common/order/${id}`,
+            options
+        );
+        const result = await response.json();
+        console.log(result);
+    };
+
+    // Conditional UI starts
     if (orders?.isLoading) {
         return (
             <div className="mt-6">
@@ -60,9 +74,21 @@ const MyOrderTable = ({ setIsShowModal, setDetailFoodId, orders }) => {
                                 <span className="currency">Tk</span>
                             </td>
                             <td>
-                                <span className="badge pending">
-                                    {order?.status}
-                                </span>
+                                {order?.status == "PENDING" && (
+                                    <span className="badge pending">
+                                        {order?.status}
+                                    </span>
+                                )}
+                                {order?.status == "DELIVERED" && (
+                                    <span className="badge delivered">
+                                        {order?.status}
+                                    </span>
+                                )}
+                                {order?.status == "CANCELLED" && (
+                                    <span className="badge canceled">
+                                        {order?.status}
+                                    </span>
+                                )}
                             </td>
                             <td>
                                 <div className="action-row">
@@ -74,10 +100,17 @@ const MyOrderTable = ({ setIsShowModal, setDetailFoodId, orders }) => {
                                     >
                                         <FaEye className="mr-1" /> details
                                     </button>
-                                    <button className="delete action-btn">
-                                        <MdDelete className="mr-1" /> cancel
-                                        order
-                                    </button>
+                                    {order?.status !== "CANCELLED" && (
+                                        <button
+                                            className="delete action-btn"
+                                            onClick={() =>
+                                                handleCancelOrder(order._id)
+                                            }
+                                        >
+                                            <MdDelete className="mr-1" /> cancel
+                                            order
+                                        </button>
+                                    )}
                                 </div>
                             </td>
                         </tr>

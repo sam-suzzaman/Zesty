@@ -82,7 +82,7 @@
     background-color: #a7ffd0;
     color: #06391e;
 }
-.user-order-table tr td span.badge.cancel {
+.user-order-table tr td span.badge.canceled {
     background-color: #ffbdb4;
     color: #bf0101;
 }
