@@ -41,28 +41,6 @@ const LoginForm = ({ setIsShowLoginForm, pathHistory }) => {
             console.log(error);
         }
         setIsLoading(false);
-        // const options = {
-        //     method: "POST",
-        //     body: JSON.stringify({
-        //         ...data,
-        //         login: true,
-        //     }),
-        // };
-        // let response = await fetch(
-        //     "http://localhost:3000/api/resturant/auth",
-        //     options
-        // );
-        // const result = await response.json();
-        // if (result.status) {
-        //     console.log(result);
-        //     delete result.result.password;
-        //     localStorage.setItem("user", JSON.stringify(result.result));
-        //     toast.success("Successfully Login!");
-        //     route.push("/resturant/dashboard");
-        // } else {
-        //     console.log(result);
-        //     toast.error(`Login failed (${result?.message})`);
-        // }
     };
     return (
         <div className="auth-form-container">

@@ -54,6 +54,8 @@ export const authOptions = {
                 token.role = user.role;
                 token.userName = user.username;
                 token._id = user._id;
+                token.avatar = user.avatar;
+                token.createdAt = user.createdAt;
             }
             return token;
         },
@@ -61,6 +63,8 @@ export const authOptions = {
             session.user.name = token.userName;
             session.user.role = token.role;
             session.user._id = token._id;
+            session.user.avatar = token.avatar;
+            session.user.createdAt = token.createdAt;
 
             return session;
         },
