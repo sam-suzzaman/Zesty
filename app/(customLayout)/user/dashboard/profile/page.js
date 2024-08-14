@@ -1,24 +1,53 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import { useSession } from "next-auth/react";
 import Loading from "@/components/Shared/Loading/Loading";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 
-const ulr =
-    "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600";
+import dayjs from "dayjs";
+import { MdOutlineTaskAlt } from "react-icons/md";
+
+import AvatarForm from "./AvatarForm";
+import PersonalInfoForm from "./PersonalInfoForm";
+import AddressForm from "./AddressForm";
+import ChangePasswordForm from "./ChangePasswordForm";
 
 const UserProfilePage = () => {
     const { data: User, status } = useSession();
+
+    const [userInfo, setUserInfo] = useState(null);
+    const [loading, setLoading] = useState(true);
     const [editState, setEditState] = useState({
         avatar: false,
         personal: false,
         address: false,
     });
 
+    const userFetchHandler = async () => {
+        setLoading(true);
+        const url = `http://localhost:3000/api/user/${User.user._id}`;
+        const response = await fetch(url);
+        const result = await response.json();
+        console.log(result);
+
+        if (result.status) {
+            setUserInfo(result.result);
+        } else {
+            setUserInfo(null);
+        }
+        setLoading(false);
+    };
+
+    // first user data fetch handler
+    useEffect(() => {
+        User?.user?._id && userFetchHandler();
+        setLoading(false);
+    }, [User?.user?._id]);
+
     // UI
-    if (status === "loading") {
+    if (status === "loading" || loading) {
         return (
             <div className="h-full flex justify-center items-center">
                 <Loading />
@@ -33,19 +62,20 @@ const UserProfilePage = () => {
                     <h3 className="title">my profile</h3>
                 </div>
 
+                {/* Profile card row */}
                 <div className="profile-card single-card">
                     <div className="display-row">
                         <div className="left-col">
                             <div className="avatar">
-                                <img src={ulr} alt="avatar" />
+                                <img src={userInfo?.avatar} alt="avatar" />
                             </div>
                             <div className="content">
-                                <h3 className="username">{User?.user?.name}</h3>
-                                <h6 className="bio">
-                                    Role: {User?.user?.role}
-                                </h6>
+                                <h3 className="username">
+                                    {userInfo?.username}
+                                </h3>
+                                <h6 className="bio">Role: {userInfo?.role}</h6>
                                 <p className="email">
-                                    Email: {User?.user?.email}
+                                    Email: {userInfo?.email}
                                 </p>
                             </div>
                         </div>
@@ -67,18 +97,43 @@ const UserProfilePage = () => {
                     </div>
 
                     {editState?.avatar && (
-                        <div className="update-row">
-                            <form>
-                                <div className="input-row">
-                                    <label htmlFor="">avatar url:</label>
-                                    <input type="text" className="input" />
-                                </div>
-                                <button type="submit">update</button>
-                            </form>
-                        </div>
+                        <AvatarForm
+                            userInfo={userInfo}
+                            userFetchHandler={userFetchHandler}
+                            User={User}
+                        />
                     )}
                 </div>
 
+                {/* Account activity card row */}
+                <div className="activity-card single-card">
+                    <div className="top-row">
+                        <h5 className="card-title">account activities</h5>
+                    </div>
+
+                    <div className="activities">
+                        <li className="item">
+                            <MdOutlineTaskAlt className="icon" />
+                            joining data:
+                            <span className="date-value">
+                                {dayjs(userInfo?.createdAt).format(
+                                    "DD MMMM, YYYY, hh:mm A"
+                                )}
+                            </span>
+                        </li>
+                        <li className="item">
+                            <MdOutlineTaskAlt className="icon" />
+                            last update:
+                            <span className="date-value">
+                                {dayjs(userInfo?.updatedAt).format(
+                                    "DD MMMM, YYYY, hh:mm A"
+                                )}
+                            </span>
+                        </li>
+                    </div>
+                </div>
+
+                {/* Personal Info card row */}
                 <div className="personal-info-card single-card">
                     <div className="top-row">
                         <h5 className="card-title">personal information</h5>
@@ -99,86 +154,16 @@ const UserProfilePage = () => {
                         </div>
                     </div>
 
-                    <div className="row">
-                        <form className="user-form">
-                            <div
-                                className={`input-row ${
-                                    editState.personal && "edit"
-                                }`}
-                            >
-                                <label htmlFor="">first name:</label>
-                                <input
-                                    type="text"
-                                    className="input"
-                                    readOnly={!editState?.personal}
-                                    defaultValue="samsuzzaman sajib"
-                                />
-                            </div>
-                            <div
-                                className={`input-row ${
-                                    editState.personal && "edit"
-                                }`}
-                            >
-                                <label htmlFor="">last name:</label>
-                                <input
-                                    type="text"
-                                    className="input"
-                                    readOnly={!editState?.personal}
-                                    defaultValue="samsuzzaman sajib"
-                                />
-                            </div>
-                            <div
-                                className={`input-row ${
-                                    editState.personal && "edit"
-                                }`}
-                            >
-                                <label htmlFor="">phone number:</label>
-                                <input
-                                    type="text"
-                                    className="input"
-                                    readOnly={!editState?.personal}
-                                    defaultValue="samsuzzaman sajib"
-                                />
-                            </div>
-                            <div
-                                className={`input-row ${
-                                    editState.personal && "edit"
-                                }`}
-                            >
-                                <label htmlFor="">gender:</label>
-                                <select
-                                    className="input"
-                                    readOnly={!editState?.personal}
-                                >
-                                    <option value="male">Male</option>
-                                    <option value="male">Female</option>
-                                    <option value="male">Others</option>
-                                </select>
-                            </div>
-                            <div
-                                className={`input-row extend ${
-                                    editState.personal && "edit"
-                                }`}
-                            >
-                                <label htmlFor="">email address:</label>
-                                <input
-                                    type="text"
-                                    className="input"
-                                    readOnly={!editState?.personal}
-                                    defaultValue="samsuzzaman sajib"
-                                />
-                            </div>
-                            <div
-                                className={`submit-row extend ${
-                                    editState?.personal && "show"
-                                }`}
-                            >
-                                <button type="submit">update now</button>
-                            </div>
-                        </form>
-                    </div>
+                    {/* form row */}
+                    <PersonalInfoForm
+                        editState={editState}
+                        userInfo={userInfo}
+                        User={User}
+                        userFetchHandler={userFetchHandler}
+                    />
                 </div>
 
+                {/* User Address card row */}
                 <div className="address-card single-card">
                     <div className="top-row">
                         <h5 className="card-title">address</h5>
@@ -199,112 +184,22 @@ const UserProfilePage = () => {
                         </div>
                     </div>
 
-                    <div className="row">
-                        <form className="user-form">
-                            <div
-                                className={`input-row ${
-                                    editState.address && "edit"
-                                }`}
-                            >
-                                <label htmlFor="">Address:</label>
-                                <input
-                                    type="text"
-                                    className="input"
-                                    readOnly={!editState?.address}
-                                    defaultValue="samsuzzaman sajib"
-                                />
-                            </div>
-
-                            <div
-                                className={`input-row ${
-                                    editState.address && "edit"
-                                }`}
-                            >
-                                <label htmlFor="">delivary Address:</label>
-                                <input
-                                    type="text"
-                                    className="input"
-                                    readOnly={!editState?.address}
-                                    defaultValue="samsuzzaman sajib"
-                                />
-                            </div>
-
-                            <div
-                                className={`input-row ${
-                                    editState.address && "edit"
-                                }`}
-                            >
-                                <label htmlFor="">city name:</label>
-                                <input
-                                    type="text"
-                                    className="input"
-                                    readOnly={!editState?.address}
-                                    defaultValue="samsuzzaman sajib"
-                                />
-                            </div>
-
-                            <div
-                                className={`input-row ${
-                                    editState.address && "edit"
-                                }`}
-                            >
-                                <label htmlFor="">post code:</label>
-                                <input
-                                    type="text"
-                                    className="input"
-                                    readOnly={!editState?.address}
-                                    defaultValue="samsuzzaman sajib"
-                                />
-                            </div>
-
-                            <div
-                                className={`submit-row extend ${
-                                    editState?.address && "show"
-                                }`}
-                            >
-                                <button type="submit">update now</button>
-                            </div>
-                        </form>
-                    </div>
+                    {/* form */}
+                    <AddressForm
+                        editState={editState}
+                        userInfo={userInfo}
+                        User={User}
+                        userFetchHandler={userFetchHandler}
+                    />
                 </div>
 
+                {/* change password form */}
                 <div className="change-password-card single-card">
                     <div className="top-row">
                         <h5 className="card-title">change password</h5>
                     </div>
 
-                    <div className="row">
-                        <form className="user-form">
-                            <div className="input-row extend edit">
-                                <label htmlFor="">old password:</label>
-                                <input
-                                    type="text"
-                                    className="input"
-                                    readOnly={true}
-                                    defaultValue="samsuzzaman sajib"
-                                />
-                            </div>
-                            <div className="input-row extend edit">
-                                <label htmlFor="">new password:</label>
-                                <input
-                                    type="text"
-                                    className="input"
-                                    defaultValue="samsuzzaman sajib"
-                                />
-                            </div>
-                            <div className="input-row extend edit">
-                                <label htmlFor="">confirm password:</label>
-                                <input
-                                    type="text"
-                                    className="input"
-                                    defaultValue="samsuzzaman sajib"
-                                />
-                            </div>
-                            <div className="submit-row extend show">
-                                <button type="submit">change password</button>
-                            </div>
-                        </form>
-                    </div>
+                    <ChangePasswordForm userInfo={userInfo} />
                 </div>
             </div>
         </>

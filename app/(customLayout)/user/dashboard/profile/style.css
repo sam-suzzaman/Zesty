@@ -88,6 +88,9 @@ Profile Card
     color: var(--accent-clr);
     text-transform: capitalize;
 }
+.user-profile-page-container > .single-card > .row .input-row > .input.email {
+    text-transform: none;
+}
 
 /* edit case */
 .user-profile-page-container > .single-card > .row .input-row.edit > label {
@@ -98,6 +101,17 @@ Profile Card
     padding: 0.25rem 0.75rem;
     border-radius: 0.25rem;
     text-transform: none;
+}
+.user-profile-page-container
+    > .single-card
+    > .row
+    .input-row.edit
+    > .input-error {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #f32f2f;
+    text-transform: capitalize;
+    margin-top: 0.15rem;
 }
 
 /* update button */
@@ -218,4 +232,32 @@ Profile-card: Update row
     padding: 0.25rem 1.75rem;
     letter-spacing: 0.1px;
     border-radius: 0.25rem;
+}
+
+/* ----------------
+Activity Card
+------------------*/
+.user-profile-page-container > .activity-card > .activities > .item {
+    list-style-type: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: var(--accent-clr);
+    margin-bottom: 0.9rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.user-profile-page-container > .activity-card > .activities > .item > .icon {
+    font-size: 1rem;
+    margin-right: 0.35rem;
+}
+.user-profile-page-container
+    > .activity-card
+    > .activities
+    > .item
+    > .date-value {
+    font-weight: 600;
+    margin-left: 0.35rem;
+    text-transform: none;
 }

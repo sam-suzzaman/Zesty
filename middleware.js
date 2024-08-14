@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export const middleware = async (req) => {
     const token = cookies(req).get("next-auth.session-token");
     const currentPathname = req.nextUrl.pathname;
-    
+
     // if(currentPathname.includes("api")){}
 
     if (!token) {
@@ -19,5 +19,5 @@ export const middleware = async (req) => {
 
 export const config = {
     // martcher: ["/user/auth", "/resturant", "/resturant/:path*"],
-    matcher: ["/cart"],
+    matcher: ["/cart", "/user/dashboard/profile"],
 };

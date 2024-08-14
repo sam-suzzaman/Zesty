@@ -22,3 +22,11 @@ html {
     --white-clr: #fff;
     --black-clr: #000;
 }
+
+.input-err-msg {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #f32f2f;
+    text-transform: capitalize;
+    margin-top: 0.15rem;
+}
