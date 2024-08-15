@@ -12,7 +12,7 @@
 }
 .cart-page-container > .page-title {
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: capitalize;
     text-align: center;
     color: var(--primary-clr);
@@ -47,8 +47,8 @@ Cart Left
     border-collapse: collapse;
 }
 .cart-left > .cart-table > thead {
-    font-weight: 600;
-    font-size: 1rem;
+    font-weight: 500;
+    font-size: 0.9rem;
     color: var(--accent-clr);
     text-transform: capitalize;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -96,14 +96,14 @@ Cart Left
     border-radius: 0.5rem;
 }
 .cart-left > .cart-table > tbody > tr > td > .food-info > .col > .title {
-    font-size: 0.9rem;
-    font-weight: 700;
+    font-size: 0.8rem;
+    font-weight: 600;
     text-transform: capitalize;
     color: var(--accent-clr);
     margin-bottom: 1px;
 }
 .cart-left > .cart-table > tbody > tr > td > .food-info > .col > .quantity {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
     text-transform: capitalize;
     color: var(--accent-clr);
@@ -145,8 +145,8 @@ Cart Left
     cursor: not-allowed;
 }
 .cart-left > .cart-table > tbody > tr > td > .controllers > .display {
-    font-size: 0.9rem;
-    font-weight: 700;
+    font-size: 0.85rem;
+    font-weight: 600;
     color: var(--primary-clr);
     width: 25px;
     height: 21px;
@@ -160,12 +160,13 @@ Cart Left
 .cart-left > .cart-table > tbody > tr > td > .price {
     width: 100%;
     font-size: 0.6rem;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--accent-clr);
     text-transform: capitalize;
 }
 .cart-left > .cart-table > tbody > tr > td > .price > .fancy {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    font-weight: 500;
     margin-right: 2px;
 }
 
@@ -173,12 +174,13 @@ Cart Left
 .cart-left > .cart-table > tbody > tr > td > .total {
     width: 100%;
     font-size: 0.6rem;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--accent-clr);
     text-transform: capitalize;
 }
 .cart-left > .cart-table > tbody > tr > td > .total > .fancy {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    font-weight: 500;
     margin-right: 2px;
 }
 
@@ -203,8 +205,8 @@ Cart Left
 Cart Right
 ==============================*/
 .cart-card-container > .cart-right > .title {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 500;
     text-transform: capitalize;
     color: var(--accent-clr);
 }
