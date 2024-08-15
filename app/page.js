@@ -1,6 +1,15 @@
+"use client";
 import Navbar from "@/components/CommonNavbar/Navbar";
+import Loading from "@/components/Shared/Loading/Loading";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
+    const { status, data } = useSession();
+
+    if (status === "loading") {
+        return <Loading />;
+    }
+
     return (
         <>
             <Navbar />

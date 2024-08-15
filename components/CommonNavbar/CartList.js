@@ -4,33 +4,6 @@ import React from "react";
 
 import { MdDelete } from "react-icons/md";
 
-const items = [
-    {
-        _id: 1,
-        img: "https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=600",
-        title: "Margherita Pizza Margherita",
-        price: "50.25",
-    },
-    {
-        _id: 2,
-        img: "https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=600",
-        title: "Margherita Pizza",
-        price: "50.25",
-    },
-    {
-        _id: 1,
-        img: "https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=600",
-        title: "Margherita Pizza",
-        price: "50.25",
-    },
-    {
-        _id: 1,
-        img: "https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=600",
-        title: "Margherita Pizza",
-        price: "50.25",
-    },
-];
-
 const CartList = ({ showCart, cartRef }) => {
     const { state, handleRemoveItemFromCart } = useCartContext();
 
