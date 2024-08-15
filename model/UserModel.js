@@ -1,3 +1,4 @@
+import { USER_ROLES } from "@/lib/Constants";
 import mongoose from "mongoose";
 const bcrypt = require("bcrypt");
 
@@ -19,10 +20,11 @@ const UserSchema = new mongoose.Schema(
             trim: true,
         },
         role: {
-            type: String,
-            enum: ["admin", "user"],
-            default: "user",
-            trim: true,
+            role: {
+                type: String,
+                enum: Object.values(USER_ROLES),
+                default: USER_ROLES.USER,
+            },
         },
         avatar: {
             type: String,

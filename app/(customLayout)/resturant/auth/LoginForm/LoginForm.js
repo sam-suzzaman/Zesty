@@ -1,4 +1,6 @@
 "use client";
+import { USER_ROLES } from "@/lib/Constants";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -8,6 +10,8 @@ import { toast } from "react-hot-toast";
 
 const LoginForm = ({ setIsShowLoginForm }) => {
     const [showPassword, setShowPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
     const route = useRouter();
 
     const {
@@ -18,28 +22,28 @@ const LoginForm = ({ setIsShowLoginForm }) => {
     } = useForm();
 
     const onSubmit = async (data) => {
-        const options = {
-            method: "POST",
-            body: JSON.stringify({
-                ...data,
-                login: true,
-            }),
-        };
-        let response = await fetch(
-            "http://localhost:3000/api/resturant/auth",
-            options
-        );
-        const result = await response.json();
-        if (result.status) {
-            console.log(result);
-            delete result.result.password;
-            localStorage.setItem("user", JSON.stringify(result.result));
-            toast.success("Successfully Login!");
-            route.push("/resturant/dashboard");
-        } else {
-            console.log(result);
-            toast.error(`Login failed (${result?.message})`);
+        setIsLoading(true);
+
+        try {
+            const response = await signIn("credentials", {
+                email: data.email,
+                password: data.password,
+                type: USER_ROLES.RESTURANT,
+                redirect: false,
+            });
+            console.log(response);
+
+            if (response.ok) {
+                toast.success("Successfully Login!");
+            } else {
+                toast.error(`Login failed (${response?.error})`);
+            }
+        } catch (error) {
+            toast.error(`Login failed (${error?.message || error})`);
+            console.log(error);
         }
+
+        setIsLoading(false);
     };
     return (
         <div className="auth-form-container">
@@ -55,40 +59,40 @@ const LoginForm = ({ setIsShowLoginForm }) => {
                 </div>
                 {/* input-1:resturant email */}
                 <div className="input-row">
-                    <label htmlFor="">resturant's email address:</label>
+                    <label htmlFor="">resturant's email:</label>
                     <input
                         type="email"
                         placeholder="Enter email address"
-                        {...register("resturantEmail", {
+                        {...register("email", {
                             required: {
                                 value: true,
                                 message: "Resturant email address is requird",
                             },
                         })}
                     />
-                    {errors?.resturantEmail && (
+                    {errors?.email && (
                         <span className="input-error">
-                            {errors?.resturantEmail?.message}
+                            {errors?.email?.message}
                         </span>
                     )}
                 </div>
 
                 {/* input-2:resturant password */}
                 <div className="input-row">
-                    <label htmlFor="">customer password:</label>
+                    <label htmlFor="">resturant's password:</label>
                     <input
                         type={showPassword ? "text" : "password"}
                         placeholder="Enter resturant password"
-                        {...register("resturantPassword", {
+                        {...register("password", {
                             required: {
                                 value: true,
                                 message: "Password is requird",
                             },
                         })}
                     />
-                    {errors?.resturantPassword && (
+                    {errors?.password && (
                         <span className="input-error">
-                            {errors?.resturantPassword?.message}
+                            {errors?.password?.message}
                         </span>
                     )}
                 </div>
@@ -104,7 +108,9 @@ const LoginForm = ({ setIsShowLoginForm }) => {
                 </div>
                 {/* submit btn */}
                 <div className="input-row auth-btn-row">
-                    <button type="submit">login</button>
+                    <button type="submit" disabled={isLoading}>
+                        {isLoading ? "loading..." : "login"}
+                    </button>
                 </div>
 
                 <p className="form-toggler-text">

@@ -1,4 +1,5 @@
 "use client";
+import { USER_ROLES } from "@/lib/Constants";
 import { signIn } from "next-auth/react";
 import React, { useState } from "react";
 
@@ -22,12 +23,13 @@ const LoginForm = ({ setIsShowLoginForm, pathHistory }) => {
 
         try {
             let url = pathHistory ? pathHistory : "/";
-            console.log(url);
+
             const response = await signIn("credentials", {
                 email: data.email,
                 password: data.password,
-                redirect: true,
-                callbackUrl: url,
+                redirect: false,
+                type: USER_ROLES.USER,
+                // callbackUrl: url,
             });
             // console.log(response);
 

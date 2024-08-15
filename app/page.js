@@ -7,7 +7,11 @@ export default function Home() {
     const { status, data } = useSession();
 
     if (status === "loading") {
-        return <Loading />;
+        return (
+            <div className="min-h-screen flex justify-center items-center">
+                <Loading />
+            </div>
+        );
     }
 
     return (

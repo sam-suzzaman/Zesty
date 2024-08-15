@@ -9,6 +9,7 @@ import UserMenu from "./UserMenu";
 import ResturantMenu from "./ResturantMenu";
 import { useSession } from "next-auth/react";
 import CommonMenu from "./CommonMenu";
+import { USER_ROLES } from "@/lib/Constants";
 
 // const mainMenuData = [
 //     {
@@ -35,6 +36,7 @@ import CommonMenu from "./CommonMenu";
 const Navbar = () => {
     // loggedin user data
     const { status, data } = useSession();
+    console.log(data);
 
     return (
         <nav id="main-navbar">
@@ -47,8 +49,12 @@ const Navbar = () => {
                     </div>
                     <div className="nav-right">
                         {!data?.user?.role && <CommonMenu />}
-                        {data?.user?.role == "user" && <UserMenu />}
-                        {data?.user?.role == "resturant" && <ResturantMenu />}
+
+                        {data?.user?.role === USER_ROLES.USER && <UserMenu />}
+
+                        {data?.user?.role === USER_ROLES.RESTURANT && (
+                            <ResturantMenu />
+                        )}
                     </div>
                 </div>
             </div>
