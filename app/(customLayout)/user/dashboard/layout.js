@@ -19,7 +19,7 @@ import { SiReaddotcv } from "react-icons/si";
 import Logo from "@/components/Shared/Logo/Logo";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 const navData = [
     {
@@ -69,8 +69,7 @@ export default function DashboardLayout({ children }) {
     }, []);
 
     const handleLogout = () => {
-        localStorage.removeItem("user");
-        route.push("/resturant/auth");
+        signOut();
     };
 
     return (

@@ -70,6 +70,7 @@ const ResturantDetailPage = (params) => {
             </>
         );
     }
+
     if (foods.isError) {
         return (
             <>

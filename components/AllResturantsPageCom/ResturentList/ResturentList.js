@@ -104,7 +104,10 @@ const ResturentList = ({ resturants }) => {
                                 </p>
                                 <p className="resturant-des">
                                     {item?.resturantDescription?.slice(0, 80)}
-                                    {" ..."}
+                                    {" ..."} Lorem ipsum, dolor sit amet
+                                    consectetur adipisicing elit. Laboriosam rem
+                                    unde ea necessitatibus modi sunt illo,
+                                    eligendi repudiandae sit! Alias.
                                 </p>
                                 <div className="info-list">
                                     <p className="item">

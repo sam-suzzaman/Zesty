@@ -205,10 +205,11 @@ Cart Left
 Cart Right
 ==============================*/
 .cart-card-container > .cart-right > .title {
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 0.9rem;
+    font-weight: 600;
     text-transform: capitalize;
-    color: var(--accent-clr);
+    color: var(--black-clr);
+    opacity: 0.85;
 }
 .cart-card-container .cart-right > .cost-row {
     margin-top: 1.25rem;

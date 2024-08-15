@@ -32,6 +32,7 @@
 }
 .user-order-page-wrapper .user-order-table thead tr th {
     border-right: 1px solid #ff9e9e;
+    font-weight: 500;
 }
 
 .user-order-page-wrapper .user-order-table tbody tr:nth-child(even) {
@@ -54,20 +55,20 @@
 }
 .user-order-page-wrapper .user-order-table tr td {
     font-size: 0.8em;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--accent-clr);
 }
 
 .user-order-page-wrapper .user-order-table tr td span.currency {
     font-size: 0.75em;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--accent-clr);
     margin-left: 2px;
 }
 
 .user-order-page-wrapper .user-order-table tr td span.badge {
     display: inline-block;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     text-transform: capitalize;
     font-weight: 400;
     padding: 1px 0.45rem;
@@ -101,7 +102,7 @@
     align-items: center;
     text-transform: capitalize;
     font-size: 0.7rem;
-    font-weight: 600;
+    font-weight: 400;
     cursor: pointer;
     transition: all 0.3s linear;
     padding: 0.12rem 0.625rem;
@@ -174,7 +175,7 @@
 }
 .order-modal-container > .modal-card > .order-modal-title {
     font-size: 1.2rem;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--accent-clr);
 }
 
@@ -205,7 +206,7 @@
     text-transform: capitalize;
     font-size: 0.85em;
     letter-spacing: 0.1em;
-    font-weight: 600;
+    font-weight: 500;
 }
 .card-body > .card-order-table thead td:last-child {
     border-right: none;
@@ -252,7 +253,7 @@
     text-transform: capitalize;
     font-size: 0.85em;
     letter-spacing: 0.1em;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .card-body > .card-order-table tfoot tr td.value {

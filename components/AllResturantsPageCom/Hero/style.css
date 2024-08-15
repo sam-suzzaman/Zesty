@@ -19,7 +19,7 @@
     outline: none;
     border: 1px solid #d2d2d2;
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--accent-clr);
     padding: 0.65rem 1rem;
 }
@@ -55,8 +55,8 @@
 .resturants-container .content .search-form .city-lists > .city {
     border-bottom: 1px solid #d2d2d2;
     padding-bottom: 0.25rem;
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 0.85rem;
+    font-weight: 500;
     color: var(--accent-clr);
     cursor: pointer;
     text-transform: capitalize;

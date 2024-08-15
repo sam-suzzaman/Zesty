@@ -10,7 +10,7 @@
 }
 .resturants-row > .title-row .title {
     font-size: 1.75rem;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--accent-clr);
 }
 .resturants-row > .title-row .title > .fancy {
@@ -19,18 +19,18 @@
     margin-left: 0.35rem;
 }
 .resturants-row > .title-row .result {
-    /* margin-top: 0.1rem; */
-    font-size: 0.85rem;
-    font-weight: 600;
+    margin-top: 0.15rem;
+    font-size: 0.75rem;
+    font-weight: 400;
     color: var(--black-clr);
     opacity: 0.7;
-    margin-left: 0.25rem;
+    /* margin-left: 0.25rem; */
 }
 .resturants-row > .title-row .result > .fancy {
     margin-right: 0.25rem;
     margin-left: 0.25rem;
     opacity: 1;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--primary-clr);
 }
 
@@ -75,50 +75,54 @@
 }
 
 .resturants-row > .card-row .resturant-title {
-    font-size: 1.65rem;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 600;
     text-transform: capitalize;
     color: var(--black-clr);
     margin-top: 0.75rem;
-    opacity: 0.9;
+    opacity: 0.8;
+}
+.resturants-row > .card-row .resturant-card:hover .resturant-title {
+    opacity: 0.95;
 }
 .resturants-row > .card-row .resturant-location {
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 0.85rem;
+    font-weight: 500;
     color: var(--accent-clr);
     text-transform: capitalize;
     margin-top: 0.25rem;
 }
 .resturants-row > .card-row .resturant-location > .icon {
-    font-size: 1.25rem;
+    font-size: 1rem;
     margin-right: 0.25rem;
 }
 
 .resturants-row > .card-row .resturant-des {
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: var(--accent-clr);
+    font-size: 0.77rem;
+    font-weight: 300;
+    color: var(--black-clr);
     text-align: justify;
     text-overflow: ellipsis;
     margin-top: 1rem;
+    line-height: 1.5rem;
 }
 
 .resturants-row > .card-row .info-list {
     margin-top: 1rem;
 }
 .resturants-row > .card-row .info-list .item {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 400;
     color: var(--accent-clr);
     margin-bottom: 0.25rem;
 }
 .resturants-row > .card-row .info-list .item > .fancy {
     font-size: 0.8rem;
-    font-weight: 600;
-    margin-right: 0.25rem;
+    font-weight: 500;
+    margin-right: 0.5rem;
 }
 
 .resturants-row > .card-row .card-footer {
@@ -135,7 +139,7 @@
     text-transform: capitalize;
     border-radius: 0.25rem;
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--primary-clr);
 }
 

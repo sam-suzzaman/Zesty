@@ -24,7 +24,7 @@
     flex-direction: column;
 }
 .auth-form .auth-title-row > .form-name {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 0.85rem;
     color: var(--primary-clr);
     text-align: center;
@@ -49,8 +49,8 @@
 }
 
 .auth-form .input-row > label {
-    font-size: 0.77rem;
-    font-weight: 600;
+    font-size: 0.7rem;
+    font-weight: 500;
     color: var(--black-clr);
     opacity: 0.7;
     text-transform: capitalize;
@@ -89,7 +89,7 @@
 .auth-form .show-pass-toggler > label {
     margin-left: 0.25rem;
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 500;
     color: #535353;
     text-transform: capitalize;
 }
@@ -98,8 +98,8 @@
     width: 100%;
     background-image: linear-gradient(to right, #eb4a4a, #d82e2e);
     color: var(--white-clr);
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 400;
     text-transform: capitalize;
     padding: 0.5rem 0.75rem;
     border-radius: 0.5rem;
@@ -112,14 +112,14 @@
     border: 1px solid #d82e2e;
 }
 .auth-form .form-toggler-text {
-    font-size: 0.8rem;
-    font-weight: 600;
+    font-size: 0.7rem;
+    font-weight: 400;
     color: #3f3f3f;
     text-align: center;
 }
 .auth-form .form-toggler-text > span {
-    font-size: 0.8rem;
-    font-weight: 700;
+    font-size: 0.75rem;
+    font-weight: 500;
     color: #d82e2e;
     opacity: 1;
     margin-left: 0.25rem;

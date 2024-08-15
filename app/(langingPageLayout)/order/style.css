@@ -11,7 +11,7 @@
 }
 .order-page-container > .page-title {
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: capitalize;
     text-align: center;
     color: var(--primary-clr);
@@ -80,7 +80,7 @@ Left COl
 .order-page-container > .main-row .input-row .input-error {
     margin-top: 0.15rem;
     font-size: 0.625rem;
-    font-weight: 600;
+    font-weight: 500;
     opacity: 0.85;
     color: rgb(238, 54, 54);
 }
@@ -103,7 +103,7 @@ Left COl
 }
 .order-page-container > .main-row .method-card .left .title {
     font-size: 0.83rem;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: capitalize;
     color: var(--primary-clr);
     opacity: 0.8;
@@ -162,17 +162,13 @@ Right COl
     height: fit-content;
 }
 .order-page-container .main-row > .right-col > .title {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     text-transform: capitalize;
-    color: var(--accent-clr);
+    color: var(--black-clr);
+    opacity: 0.85;
 }
-.order-page-container .main-row > .right-col > .title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-transform: capitalize;
-    color: var(--accent-clr);
-}
+
 .order-page-container .main-row .right-col > .cost-row {
     margin-top: 1.25rem;
 }
