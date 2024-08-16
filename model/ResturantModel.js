@@ -19,6 +19,10 @@ const ResturantSchema = new mongoose.Schema(
             required: [true, "resturant password is required"],
             trim: true,
         },
+        description: {
+            type: String,
+            trim: true,
+        },
         contactNumber: {
             type: String,
             required: [true, "resturant contact number is required"],
@@ -36,7 +40,7 @@ const ResturantSchema = new mongoose.Schema(
             type: String,
             trim: true,
         },
-        city: {
+        cityName: {
             type: String,
             trim: true,
         },
