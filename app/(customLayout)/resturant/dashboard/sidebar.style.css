@@ -3,7 +3,7 @@
     right: -15px;
     top: 10px;
     font-size: 1.2rem;
-    font-weight: 900;
+    font-weight: 700;
     color: var(--white-clr);
     background-color: #444444;
     padding: 0.2rem 0.25rem;
@@ -31,23 +31,26 @@
     color: var(--accent-clr);
 }
 .resturent-d-left-sidebar .top-row .avatar-row .username {
-    font-size: 0.95rem;
-    font-weight: 700;
+    font-size: 0.9rem;
+    font-weight: 500;
     text-transform: capitalize;
     text-overflow: ellipsis;
     text-align: center;
     color: var(--accent-clr);
-    margin-top: 0.1rem;
+    margin-top: 0.25rem;
 }
 .resturent-d-left-sidebar .top-row .avatar-row .role {
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-size: 0.65rem;
+    font-weight: 400;
     text-transform: capitalize;
     text-overflow: ellipsis;
     text-align: center;
-    color: var(--accent-clr);
+    color: var(--black-clr);
     opacity: 0.9;
-    margin-top: 0.1rem;
+    margin-top: 0.25rem;
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 0.1rem 0.5rem;
+    border-radius: 0.25rem;
 }
 
 /* sidebar menu */
@@ -68,7 +71,7 @@
     display: inline-flex;
     align-items: center;
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--black-clr);
     opacity: 0.75;
     text-transform: capitalize;
@@ -99,7 +102,7 @@
     background-color: #2e2e2e;
     color: var(--white-clr);
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 400;
     text-transform: capitalize;
     padding: 0.35rem 0;
     border-radius: 0.25rem;

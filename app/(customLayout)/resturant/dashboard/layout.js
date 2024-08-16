@@ -51,7 +51,7 @@ const navData = [
 export default function DashboardLayout({ children }) {
     const [showSidebar, setShowSidebar] = useState(false);
     const { status, data } = useSession();
-
+    console.log(data);
     const pathName = usePathname();
 
     return (
@@ -71,8 +71,8 @@ export default function DashboardLayout({ children }) {
                     <div className="top-row">
                         <div className="avatar-row">
                             <CgProfile className="avatar" />
-                            <h3 className="username">samsuzzaman sajib</h3>
-                            <h6 className="role">resturant owner</h6>
+                            <h3 className="username">{data?.user?.name}</h3>
+                            <h6 className="role">{data?.user?.role}</h6>
                         </div>
 
                         <ul className="sidebar-menu">

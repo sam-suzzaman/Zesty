@@ -13,28 +13,28 @@ import { toast } from "react-hot-toast";
 import swal from "sweetalert";
 import { useRouter } from "next/navigation";
 import DashboardPageTitle from "@/components/Shared/DashboardPageTitle/DashboardPageTitle";
+import { useSession } from "next-auth/react";
 
 const page = () => {
     const [foods, setFoods] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const router = useRouter();
+    const { status, data } = useSession();
 
     useEffect(() => {
         foodListFetchHandler();
-    }, []);
+    }, [data?.user?._id]);
 
     const foodListFetchHandler = async () => {
         setIsLoading(true);
         setIsError(false);
-        const resturantData = localStorage.getItem("user");
-        const resturant = JSON.parse(resturantData);
 
-        if (!resturant._id) {
+        if (!data?.user?._id) {
             setIsError("no resturant found,login first");
             setFoods(null);
         } else {
-            let url = `http://localhost:3000/api/resturant/food/${resturant._id}`;
+            let url = `http://localhost:3000/api/resturant/food/${data?.user?._id}`;
             const response = await fetch(url);
             const result = await response.json();
 
@@ -80,7 +80,7 @@ const page = () => {
         }
     };
 
-    if (isLoading) {
+    if (isLoading || status === "loading") {
         return <Loading />;
     }
     if (isError) {

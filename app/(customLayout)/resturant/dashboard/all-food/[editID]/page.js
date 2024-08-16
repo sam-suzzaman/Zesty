@@ -7,6 +7,8 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Loading from "@/components/Shared/Loading/Loading";
+import DashboardPageTitle from "@/components/Shared/DashboardPageTitle/DashboardPageTitle";
+import { useSession } from "next-auth/react";
 
 const EditFoodPage = (props) => {
     const router = useRouter();
@@ -15,6 +17,7 @@ const EditFoodPage = (props) => {
     const [food, setFood] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
+    const { status, data: User } = useSession();
 
     const {
         register,
@@ -35,7 +38,7 @@ const EditFoodPage = (props) => {
         let url = `http://localhost:3000/api/resturant/food/edit/${foodID}`;
         const response = await fetch(url);
         const result = await response.json();
-
+        console.log(result);
         if (!result.status) {
             console.log(result);
             setIsError(`${result.message} (${result.result})`);
@@ -52,7 +55,7 @@ const EditFoodPage = (props) => {
         const getResturant = localStorage.getItem("user");
         const resturantData = JSON.parse(getResturant);
 
-        if (food.foodOfResturant !== resturantData._id) {
+        if (food.foodOfResturant !== User?.user?._id) {
             toast.error(`Unauthorized (You don't have permission to update)`);
         } else {
             const mergedFood = {
@@ -73,7 +76,6 @@ const EditFoodPage = (props) => {
 
             const result = await response.json();
             if (result.status) {
-                console.log(result);
                 toast.success(`Done, ${result.message}`);
                 reset();
                 router.push(`../all-food`);
@@ -84,7 +86,7 @@ const EditFoodPage = (props) => {
         }
     };
 
-    if (isLoading) {
+    if (isLoading || status === "loading") {
         return <Loading />;
     }
     if (isError) {
@@ -93,12 +95,10 @@ const EditFoodPage = (props) => {
 
     return (
         <div className="edit-food-page-wrapper">
-            <div className="page-title-row">
-                <h3 className="title">Update/Edit food</h3>
-                <p className="subtitle">
-                    Update your food items to fullfill customers demand
-                </p>
-            </div>
+            <DashboardPageTitle
+                title="Update/Edit food"
+                subtitle="Update your food items to fullfill customers demand"
+            />
             <div className="food-form-row">
                 <form
                     className="food-form"

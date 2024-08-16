@@ -36,7 +36,6 @@ import { USER_ROLES } from "@/lib/Constants";
 const Navbar = () => {
     // loggedin user data
     const { status, data } = useSession();
-    console.log(data);
 
     return (
         <nav id="main-navbar">

@@ -1,22 +1,6 @@
 .edit-food-page-wrapper {
 }
 
-.edit-food-page-wrapper > .page-title-row .title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-transform: capitalize;
-    letter-spacing: 0.5px;
-    color: var(--accent-clr);
-    line-height: 1.5rem;
-}
-.edit-food-page-wrapper > .page-title-row .subtitle {
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: var(--accent-clr);
-    opacity: 0.8;
-    margin-top: 0.4rem;
-}
-
 .edit-food-page-wrapper > .food-form-row {
     margin-top: 2rem;
     width: 100%;
@@ -42,8 +26,8 @@
 }
 
 .edit-food-page-wrapper > .food-form-row .food-form .input-row > label {
-    font-size: 0.77rem;
-    font-weight: 600;
+    font-size: 0.7rem;
+    font-weight: 500;
     color: var(--black-clr);
     opacity: 0.7;
     text-transform: capitalize;
@@ -90,8 +74,8 @@ textarea:focus {
     max-width: 12.5rem;
     background-image: linear-gradient(to right, #eb4a4a, #d82e2e);
     color: var(--white-clr);
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 400;
     text-transform: capitalize;
     padding: 0.5rem 0.75rem;
     border-radius: 0.5rem;
@@ -114,14 +98,16 @@ textarea:focus {
     .input-row.auth-btn-row
     > button.cancel-update-btn {
     background-image: none;
+    background-color: transparent;
+    color: var(--accent-clr);
     border: 1px solid var(--accent-clr);
-    background-color: var(--accent-clr);
 }
 .edit-food-page-wrapper
     > .food-form-row
     .food-form
     .input-row.auth-btn-row
     > button.cancel-update-btn:hover {
-    background-color: transparent;
-    color: var(--accent-clr);
+    border: 1px solid var(--accent-clr);
+    background-color: var(--accent-clr);
+    color: var(--white-clr);
 }

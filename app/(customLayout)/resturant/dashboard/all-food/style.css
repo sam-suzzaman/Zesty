@@ -36,6 +36,7 @@
 }
 .manage-food-page-wrapper .table thead tr th {
     border-right: 1px solid #ff9e9e;
+    font-weight: 600;
 }
 
 .manage-food-page-wrapper .table tbody tr:nth-child(even) {
@@ -58,7 +59,7 @@
 }
 .manage-food-page-wrapper .table tr td {
     font-size: 0.8em;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--accent-clr);
 }
 
@@ -80,7 +81,7 @@
     align-items: center;
     text-transform: capitalize;
     font-size: 0.7rem;
-    font-weight: 600;
+    font-weight: 400;
     cursor: pointer;
     transition: all 0.3s linear;
     padding: 0.12rem 0.625rem;

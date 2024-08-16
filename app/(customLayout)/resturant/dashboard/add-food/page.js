@@ -6,6 +6,7 @@ import "./style.css";
 import { useForm } from "react-hook-form";
 
 import { toast } from "react-hot-toast";
+import DashboardPageTitle from "@/components/Shared/DashboardPageTitle/DashboardPageTitle";
 
 const page = () => {
     const {
@@ -46,12 +47,10 @@ const page = () => {
     };
     return (
         <div className="add-food-page-wrapper">
-            <div className="page-title-row">
-                <h3 className="title">add food</h3>
-                <p className="subtitle">
-                    Add a new food item for your customers
-                </p>
-            </div>
+            <DashboardPageTitle
+                title="add food"
+                subtitle="Add a new food item for your customers"
+            />
             <div className="food-form-row">
                 <form
                     className="food-form"
