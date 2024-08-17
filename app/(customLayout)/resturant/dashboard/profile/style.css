@@ -87,8 +87,8 @@ Single-card style
 }
 .resturant-profile-page-container > .single-card > .row .input-row > .input {
     outline: none;
-    font-size: 0.85rem;
-    font-weight: 500;
+    font-size: 0.8rem;
+    font-weight: 400;
     color: var(--accent-clr);
     text-transform: capitalize;
 }

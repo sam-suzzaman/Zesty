@@ -12,30 +12,29 @@ const ChangePasswordForm = ({ resturantData }) => {
     } = useForm();
 
     const onSubmit = async (data) => {
-        // const { oldPassword, newPassword, confirmPassword } = data;
-        // if (newPassword !== confirmPassword) {
-        //     toast.error("Confirm password not matched");
-        // } else {
-        //     const credentials = {
-        //         oldPassword,
-        //         newPassword,
-        //         email: userInfo.email,
-        //     };
-        //     const options = {
-        //         method: "PATCH",
-        //         body: JSON.stringify(credentials),
-        //     };
-        //     const url = `http://localhost:3000/api/user/reset-password/${userInfo._id}`;
-        //     const response = await fetch(url, options);
-        //     const result = await response.json();
-        //     if (result.status) {
-        //         toast.success(`${result.result}`);
-        //         signOut();
-        //     } else {
-        //         toast.error(`${result.result}`);
-        //     }
-        //     console.log(result);
-        // }
+        const { oldPassword, newPassword, confirmPassword } = data;
+        if (newPassword !== confirmPassword) {
+            toast.error("Confirm password not matched");
+        } else {
+            const credentials = {
+                oldPassword,
+                newPassword,
+                email: resturantData.email,
+            };
+            const options = {
+                method: "PATCH",
+                body: JSON.stringify(credentials),
+            };
+            const url = `http://localhost:3000/api/resturant/reset-password/${resturantData._id}`;
+            const response = await fetch(url, options);
+            const result = await response.json();
+            if (result.status) {
+                toast.success(`${result.result}`);
+                signOut();
+            } else {
+                toast.error(`${result.result}`);
+            }
+        }
     };
 
     return (
