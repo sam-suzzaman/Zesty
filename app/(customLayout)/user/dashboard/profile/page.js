@@ -43,7 +43,6 @@ const UserProfilePage = () => {
     // first user data fetch handler
     useEffect(() => {
         User?.user?._id && userFetchHandler();
-        setLoading(false);
     }, [User?.user?._id]);
 
     // UI

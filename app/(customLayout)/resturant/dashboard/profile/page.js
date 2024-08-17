@@ -8,6 +8,7 @@ import dayjs from "dayjs";
 import PersonalInfoForm from "./PersonalInfoForm";
 import AddressForm from "./AddressForm";
 import ChangePasswordForm from "./ChangePasswordForm";
+import Loading from "@/components/Shared/Loading/Loading";
 
 const ResturantProfilePage = () => {
     const { data: Resturant, status } = useSession();
@@ -21,10 +22,9 @@ const ResturantProfilePage = () => {
 
     const resturantFetchHandler = async () => {
         setLoading(true);
-        const url = `http://localhost:3000/api/Resturant/${Resturant.user._id}`;
+        const url = `http://localhost:3000/api/resturant/${Resturant.user._id}`;
         const response = await fetch(url);
         const result = await response.json();
-        console.log(result);
 
         if (result.status) {
             setResturantData(result.result);
@@ -37,8 +37,16 @@ const ResturantProfilePage = () => {
     // first Resturant data fetch handler
     useEffect(() => {
         Resturant?.user?._id && resturantFetchHandler();
-        setLoading(false);
     }, [Resturant?.user?._id]);
+
+    // UI
+    if (status === "loading" || loading) {
+        return (
+            <div className="h-full flex justify-center items-center">
+                <Loading />
+            </div>
+        );
+    }
 
     return (
         <div className="resturant-profile-page-container">

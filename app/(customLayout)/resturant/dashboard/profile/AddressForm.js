@@ -16,18 +16,18 @@ const AddressForm = ({
     } = useForm();
 
     const onSubmit = async (data) => {
-        console.log(data);
-        // const options = { method: "PATCH", body: JSON.stringify(data) };
-        // const url = `http://localhost:3000/api/user/${User.user._id}`;
-        // const response = await fetch(url, options);
-        // const result = await response.json();
-        // if (result.status) {
-        //     toast.success(`${result.message}`);
-        //     userFetchHandler();
-        // } else {
-        //     console.log(result.result);
-        //     toast.error(`${result.message}(${result.result})`);
-        // }
+        const options = { method: "PATCH", body: JSON.stringify(data) };
+        const url = `http://localhost:3000/api/resturant/${Resturant.user._id}`;
+        const response = await fetch(url, options);
+        const result = await response.json();
+
+        if (result.status) {
+            toast.success(`${result.message}`);
+            resturantFetchHandler();
+        } else {
+            console.log(result.result);
+            toast.error(`${result.message}(${result.result})`);
+        }
     };
     return (
         <div className="row">

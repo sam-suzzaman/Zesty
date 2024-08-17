@@ -1,11 +1,12 @@
 import connectDB from "@/lib/connectDB";
-import UserModel from "@/model/UserModel";
+import ResturantModel from "@/model/ResturantModel";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 import { authOptions } from "../../auth/[...nextauth]/route";
 
-export async function GET(req, content) {
-    const _id = content.params.id;
+// fetch single resturant data
+export async function GET(req, context) {
+    const _id = context.params.id;
     try {
         connectDB();
         if (!_id) {
@@ -15,35 +16,36 @@ export async function GET(req, content) {
                 result: "Invalid user ID",
             });
         } else {
-            const isUserExists = await UserModel.findById(_id).select(
+            const isResturantExist = await ResturantModel.findById(_id).select(
                 "-password"
             );
 
-            if (!isUserExists) {
+            if (!isResturantExist) {
                 return NextResponse.json({
                     status: false,
                     message: "Operation failed",
-                    result: "User not found",
+                    result: "Resturant not found",
                 });
             } else {
                 return NextResponse.json({
                     status: true,
-                    message: "User get successfully",
-                    result: isUserExists,
+                    message: "Resturant get successfully",
+                    result: isResturantExist,
                 });
             }
         }
     } catch (error) {
+        console.log(error.message);
         return NextResponse.json({
             status: false,
             message: "Operation failed",
-            result: error?.message,
+            result: error.message,
         });
     }
 }
 
-export async function PATCH(req, content) {
-    const _id = content.params.id;
+export async function PATCH(req, context) {
+    const _id = context.params.id;
     const { user } = await getServerSession(authOptions);
     const data = await req.json();
 
@@ -63,7 +65,7 @@ export async function PATCH(req, content) {
                     result: "Your don't have premission to update profile",
                 });
             } else {
-                const res = await UserModel.findByIdAndUpdate(_id, data, {
+                const res = await ResturantModel.findByIdAndUpdate(_id, data, {
                     new: true,
                     runValidators: true,
                 });
@@ -83,11 +85,11 @@ export async function PATCH(req, content) {
             }
         }
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         return NextResponse.json({
             status: false,
-            message: "Profile update failed",
-            result: error?.message,
+            message: "Operation failed",
+            result: error.message,
         });
     }
 }
