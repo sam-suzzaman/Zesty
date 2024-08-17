@@ -28,11 +28,11 @@ export async function GET(req) {
             }).populate("foodOfResturant");
 
             query = {
-                resturantCityName: { $regex: new RegExp(location, "i") },
+                cityName: { $regex: new RegExp(location, "i") },
                 ...(food
                     ? { _id: food.foodOfResturant._id }
                     : {
-                          resturantName: {
+                          name: {
                               $regex: new RegExp(resturantOrFood, "i"),
                           },
                       }),
@@ -41,7 +41,7 @@ export async function GET(req) {
         } else if (location) {
             // Case-3: Only location param present
             query = {
-                resturantCityName: { $regex: new RegExp(location, "i") },
+                cityName: { $regex: new RegExp(location, "i") },
             };
             resturants = await ResturantModel.find(query);
         } else if (resturantOrFood) {
@@ -53,7 +53,7 @@ export async function GET(req) {
             query = food
                 ? { _id: food.foodOfResturant._id }
                 : {
-                      resturantName: {
+                      name: {
                           $regex: new RegExp(resturantOrFood, "i"),
                       },
                   };

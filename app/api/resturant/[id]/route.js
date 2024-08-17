@@ -44,6 +44,7 @@ export async function GET(req, context) {
     }
 }
 
+// Update single resturant info
 export async function PATCH(req, context) {
     const _id = context.params.id;
     const { user } = await getServerSession(authOptions);

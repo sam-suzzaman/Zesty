@@ -90,39 +90,33 @@ const ResturentList = ({ resturants }) => {
                         <div className="resturant-card" key={item._id}>
                             <div className="card-body">
                                 <div className="brand">
-                                    <img
-                                        src={item?.resturantLogo}
-                                        alt="brand"
-                                    />
+                                    <img src={item?.avatar} alt="brand" />
                                 </div>
                                 <h3 className="resturant-title">
-                                    {item?.resturantName}
+                                    {item?.name}
                                 </h3>
                                 <p className="resturant-location">
                                     <IoLocationOutline className="icon" />
-                                    {item?.resturantCityName}
+                                    {item?.cityName}
                                 </p>
                                 <p className="resturant-des">
-                                    {item?.resturantDescription?.slice(0, 80)}
-                                    {" ..."} Lorem ipsum, dolor sit amet
-                                    consectetur adipisicing elit. Laboriosam rem
-                                    unde ea necessitatibus modi sunt illo,
-                                    eligendi repudiandae sit! Alias.
+                                    {item?.description?.slice(0, 80)}
+                                    {" ..."}
                                 </p>
                                 <div className="info-list">
                                     <p className="item">
                                         <span className="fancy">Address:</span>
-                                        {item?.resturantAddress}
+                                        {item?.address}
                                     </p>
                                     <p className="item">
                                         <span className="fancy">Contact:</span>
-                                        {item?.resturantContactNumber}
+                                        {item?.contactNumber}
                                     </p>
                                 </div>
                             </div>
                             <div className="card-footer">
                                 <Link
-                                    href={`/all-resturants/${item.resturantName}?id=${item._id}`}
+                                    href={`/all-resturants/${item.name}?id=${item._id}`}
                                     className="show-more-btn"
                                 >
                                     explore foods

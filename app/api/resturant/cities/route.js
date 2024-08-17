@@ -17,7 +17,7 @@ export async function GET(res) {
             });
         } else {
             // Step 1: Extract the resturantCityName property from each object
-            const cityNames = response.map((item) => item.resturantCityName);
+            const cityNames = response.map((item) => item.cityName);
 
             // Step 2: Convert all city names to lowercase to ensure case insensitivity
             const lowercasedCityNames = cityNames.map((city) =>

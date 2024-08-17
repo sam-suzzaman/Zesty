@@ -35,7 +35,7 @@ const ResturantDetailPage = (params) => {
             });
             const response = await fetch(url);
             const result = await response.json();
-            console.log(result);
+
             if (result.status) {
                 setFoods({
                     ...foods,
