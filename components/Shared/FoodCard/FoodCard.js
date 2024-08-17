@@ -8,11 +8,17 @@ import { IoIosArrowForward } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 import { IoIosHeart } from "react-icons/io";
 import { useCartContext } from "@/context/CartContext";
+import { USER_ROLES } from "@/lib/Constants";
 
-const FoodCard = ({ food }) => {
+const FoodCard = ({ food, role }) => {
     const { state, handleItemAddToCart } = useCartContext();
 
     const [isFavourite, setIsFavoutire] = useState(false);
+
+    let isBtnDisabled = false;
+    isBtnDisabled =
+        state?.cart?.some((item) => item._id === food._id) ||
+        role !== USER_ROLES.USER;
 
     return (
         <div className="food-card" key={food._id}>
@@ -43,7 +49,7 @@ const FoodCard = ({ food }) => {
                     <h3 className="name">amar resturant</h3>
                 </div>
                 <p className="food-des">
-                    {food?.foodDescription}
+                    {food?.foodDescription.slice(0, 100)}
                     <Link href="/" className="food-detail-link">
                         See more...
                     </Link>
@@ -56,9 +62,7 @@ const FoodCard = ({ food }) => {
                 <button
                     className="add-to-cart-btn"
                     onClick={() => handleItemAddToCart(food)}
-                    disabled={state?.cart?.some(
-                        (item) => item._id === food._id
-                    )}
+                    disabled={isBtnDisabled}
                 >
                     add to cart <IoIosArrowForward className="icon" />
                 </button>

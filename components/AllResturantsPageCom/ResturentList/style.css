@@ -4,35 +4,7 @@
     margin: 0 auto;
     padding: 4rem 1.5rem;
 }
-.resturants-row > .title-row {
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 0.5rem;
-}
-.resturants-row > .title-row .title {
-    font-size: 1.75rem;
-    font-weight: 600;
-    color: var(--accent-clr);
-}
-.resturants-row > .title-row .title > .fancy {
-    text-transform: capitalize;
-    color: var(--primary-clr);
-    margin-left: 0.35rem;
-}
-.resturants-row > .title-row .result {
-    margin-top: 0.15rem;
-    font-size: 0.75rem;
-    font-weight: 400;
-    color: var(--black-clr);
-    opacity: 0.7;
-    /* margin-left: 0.25rem; */
-}
-.resturants-row > .title-row .result > .fancy {
-    margin-right: 0.25rem;
-    margin-left: 0.25rem;
-    opacity: 1;
-    font-weight: 600;
-    color: var(--primary-clr);
-}
+
 
 .resturants-row > .card-row {
     margin-top: 3rem;

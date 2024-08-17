@@ -20,11 +20,9 @@ const UserSchema = new mongoose.Schema(
             trim: true,
         },
         role: {
-            role: {
-                type: String,
-                enum: Object.values(USER_ROLES),
-                default: USER_ROLES.USER,
-            },
+            type: String,
+            enum: Object.values(USER_ROLES),
+            default: USER_ROLES.USER,
         },
         avatar: {
             type: String,

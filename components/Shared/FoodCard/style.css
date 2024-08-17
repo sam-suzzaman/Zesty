@@ -12,7 +12,7 @@
     width: 100%;
     height: 12.5rem;
     border-radius: 0.25rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     position: relative;
 }
 .food-card > .card-body .food-thumb > img {
@@ -66,15 +66,14 @@
 }
 
 .food-card > .card-body .card-title {
-    font-size: 1.22rem;
+    font-size: 1.25rem;
     font-weight: 600;
-    color: var(--black-clr);
-    opacity: 0.8;
-    margin-bottom: 0.75rem;
+    color: var(--accent-clr);
+    margin-bottom: 0.5rem;
     text-transform: capitalize;
 }
 .food-card > .card-body:hover .card-title {
-    opacity: 0.95;
+    color: var(--primary-clr);
 }
 
 .food-card > .card-body .resturant-profile {
@@ -83,8 +82,8 @@
     align-items: center;
 }
 .food-card > .card-body .resturant-profile .logo {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     margin-right: 0.35rem;
 }
@@ -94,7 +93,7 @@
     border-radius: 50%;
 }
 .food-card > .card-body .resturant-profile h3.name {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     text-transform: capitalize;
     font-weight: 600;
     color: var(--accent-clr);
@@ -106,7 +105,7 @@
     color: var(--accent-clr);
     text-align: justify;
     text-overflow: ellipsis;
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 .food-card > .card-body .food-des > .food-detail-link {
     margin-left: 0.2rem;
@@ -133,7 +132,7 @@
 }
 .food-card > .card-footer > .price > .value {
     font-weight: 700;
-    font-size: 1.9rem;
+    font-size: 1.75rem;
     color: var(--primary-clr);
 }
 .food-card > .card-footer > .add-to-cart-btn {

@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 
 import { toast } from "react-hot-toast";
 import DashboardPageTitle from "@/components/Shared/DashboardPageTitle/DashboardPageTitle";
+import { useSession } from "next-auth/react";
 
 const page = () => {
     const {
@@ -17,15 +18,15 @@ const page = () => {
         reset,
     } = useForm();
 
-    const onSubmit = async (data) => {
-        const getResturant = localStorage.getItem("user");
-        const resturantData = JSON.parse(getResturant);
+    const { status, data: User } = useSession();
 
+    const onSubmit = async (data) => {
         const mergedFood = {
             ...data,
             foodPrice: data.foodPrice * 1,
-            foodOfResturant: resturantData?._id,
+            foodOfResturant: User?.user?._id,
         };
+
         const options = {
             method: "POST",
             body: JSON.stringify(mergedFood),
@@ -34,10 +35,9 @@ const page = () => {
             "http://localhost:3000/api/resturant/food",
             options
         );
-
         const result = await response.json();
+
         if (result.status) {
-            console.log(result);
             toast.success(`Done, ${result.message}`);
             reset();
         } else {

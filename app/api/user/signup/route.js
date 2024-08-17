@@ -18,7 +18,6 @@ export async function POST(req) {
                 result: null,
             });
         } else {
-            data.role = "user";
             const newUser = new UserModel(data);
             await newUser.save();
 

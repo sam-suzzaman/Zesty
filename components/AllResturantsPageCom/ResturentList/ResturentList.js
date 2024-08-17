@@ -4,6 +4,7 @@ import "./style.css";
 import { IoLocationOutline } from "react-icons/io5";
 import Link from "next/link";
 import Loading from "@/components/Shared/Loading/Loading";
+import LandingPageTitle from "@/components/Shared/LandingPageTitle/LandingPageTitle";
 
 // const data = [
 //     {
@@ -70,21 +71,12 @@ const ResturentList = ({ resturants }) => {
     return (
         <>
             <div className="resturants-row">
-                <div className="title-row">
-                    <h4 className="title">
-                        Explore
-                        <span className="fancy">Resturants</span>
-                    </h4>
-                    <h6 className="result">
-                        Total
-                        <span className="fancy">
-                            {resturants?.data?.length < 10
-                                ? `0${resturants?.data?.length}`
-                                : resturants?.data?.length}
-                        </span>
-                        results are found
-                    </h6>
-                </div>
+                <LandingPageTitle
+                    title="Explore"
+                    fancyTitle="Resturants"
+                    result={resturants?.data?.length}
+                />
+
                 <div className="card-row">
                     {resturants?.data?.map((item) => (
                         <div className="resturant-card" key={item._id}>

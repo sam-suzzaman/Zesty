@@ -51,7 +51,7 @@ const navData = [
 export default function DashboardLayout({ children }) {
     const [showSidebar, setShowSidebar] = useState(false);
     const { status, data } = useSession();
-    console.log(data);
+
     const pathName = usePathname();
 
     return (

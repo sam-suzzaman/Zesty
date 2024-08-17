@@ -1,0 +1,17 @@
+.all-food-page-wrapper {
+    display: flex;
+    justify-content: center;
+}
+.all-food-page-wrapper > .page-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2.5rem 1.5rem;
+}
+
+.all-food-page-wrapper > .page-container > .foods-container {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-between;
+    grid-gap: 2.5rem;
+}
