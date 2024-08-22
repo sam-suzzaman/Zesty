@@ -13,7 +13,6 @@ const OrderPage = () => {
     const { status, data: User } = useSession();
     const [navbarHeight, setNavbarHeight] = useState(0);
     const [paymentMethod, setPaymentMethod] = useState("");
-    const [shippingMethod, setShippingMethod] = useState("");
     const router = useRouter();
 
     const {
@@ -38,15 +37,14 @@ const OrderPage = () => {
             delivaryAddress,
         } = data;
         if (data) {
-            if (!shippingMethod) {
-                toast.error("Please select a Shipping Method");
-            } else if (!paymentMethod) {
+            if (!paymentMethod) {
                 toast.error("Please select a Payment Method");
             } else {
                 const items = state?.cart?.map((food) => ({
                     food: food._id,
                     quantity: food.quantity,
                     price: food.foodPrice,
+                    foodOfResturant: food.foodOfResturant._id,
                 }));
 
                 const order = {
@@ -57,7 +55,6 @@ const OrderPage = () => {
                     customerName,
                     customerEmail,
                     contactNumber: customerContactNumber,
-                    shippingMethod,
                     paymentMethod,
                 };
 
@@ -134,7 +131,7 @@ const OrderPage = () => {
                                                         "Customer name is requird",
                                                 },
                                             })}
-                                            defaultValue={User?.user.name}
+                                            defaultValue={User?.user.username}
                                         />
                                         {errors?.customerName && (
                                             <span className="input-error">
@@ -192,7 +189,9 @@ const OrderPage = () => {
                                                         "Delivary address is requird",
                                                 },
                                             })}
-                                            defaultValue={User?.user?.address}
+                                            defaultValue={
+                                                User?.user?.delivaryAddress
+                                            }
                                         />
                                         {errors?.delivaryAddress && (
                                             <span className="input-error">
@@ -228,7 +227,7 @@ const OrderPage = () => {
                                                 }
                                             )}
                                             defaultValue={
-                                                User?.user?.contactNumber
+                                                User?.user?.phoneNumber
                                             }
                                         />
                                         {errors?.customerContactNumber && (
@@ -240,61 +239,6 @@ const OrderPage = () => {
                                                 }
                                             </span>
                                         )}
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* SubRow-2: Shipping method */}
-                            <div className="sub-row payment-row">
-                                <h5 className="title">
-                                    Available shipping method
-                                </h5>
-
-                                <div className="method-container">
-                                    {/* Method-1:SCS */}
-                                    <div
-                                        className="method-card"
-                                        onClick={() => setShippingMethod("SCS")}
-                                    >
-                                        <div className="left">
-                                            <h6 className="title">
-                                                Sundarban courier service
-                                            </h6>
-                                            <p className="info">
-                                                Delivery: 2-3 Work days
-                                            </p>
-                                        </div>
-                                        <div className="right">
-                                            <span
-                                                className={`icon ${
-                                                    shippingMethod == "SCS" &&
-                                                    "select"
-                                                }`}
-                                            ></span>
-                                        </div>
-                                    </div>
-
-                                    {/* Method-2:redex */}
-                                    <div
-                                        className="method-card"
-                                        onClick={() => setShippingMethod("RCS")}
-                                    >
-                                        <div className="left">
-                                            <h6 className="title">
-                                                redex courier service
-                                            </h6>
-                                            <p className="info">
-                                                Delivery: 2-3 Work days
-                                            </p>
-                                        </div>
-                                        <div className="right">
-                                            <span
-                                                className={`icon ${
-                                                    shippingMethod == "RCS" &&
-                                                    "select"
-                                                }`}
-                                            ></span>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

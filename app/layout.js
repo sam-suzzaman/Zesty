@@ -6,7 +6,7 @@ import AuthProvider from "@/services/AuthProvider";
 import { Poppins } from "next/font/google";
 
 const poppins = Poppins({
-    weight: ["300", "400", "500", "600", "600", "800", "900"],
+    weight: ["300", "400", "500", "600", "700", "800", "900"],
     subsets: ["latin"],
 });
 

@@ -7,7 +7,10 @@ export async function GET(res) {
     try {
         await connectDB();
 
-        const result = await FoodModel.find({});
+        const result = await FoodModel.find({}).populate(
+            "foodOfResturant",
+            "avatar name"
+        );
 
         return NextResponse.json({
             status: true,

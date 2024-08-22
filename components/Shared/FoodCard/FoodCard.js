@@ -20,6 +20,7 @@ const FoodCard = ({ food, role }) => {
         state?.cart?.some((item) => item._id === food._id) ||
         role !== USER_ROLES.USER;
 
+    console.log(food);
     return (
         <div className="food-card" key={food._id}>
             <div className="card-body">
@@ -42,11 +43,11 @@ const FoodCard = ({ food, role }) => {
                 <h3 className="card-title">{food?.foodTitle}</h3>
                 <div className="resturant-profile">
                     <img
-                        src="https://images.pexels.com/photos/1964471/pexels-photo-1964471.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                        src={food?.foodOfResturant?.avatar}
                         alt="brand"
                         className="logo"
                     />
-                    <h3 className="name">amar resturant</h3>
+                    <h3 className="name">{food?.foodOfResturant?.name}</h3>
                 </div>
                 <p className="food-des">
                     {food?.foodDescription.slice(0, 100)}

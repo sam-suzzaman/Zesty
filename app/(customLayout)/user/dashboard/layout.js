@@ -50,27 +50,15 @@ const navData = [
 
 export default function DashboardLayout({ children }) {
     const [showSidebar, setShowSidebar] = useState(false);
-    const [userInfo, setUserInfo] = useState(null);
     // load loggedin user data
     const { status, data } = useSession();
 
     const pathName = usePathname();
-    const route = useRouter();
-
-    useEffect(() => {
-        let user = localStorage.getItem("user");
-        if (!user && pathName == "/resturant/dashboard") {
-            route.push("/resturant/auth");
-        } else if (user && pathName == "/resturant/auth") {
-            route.push("/resturant/dashboard");
-        } else {
-            setUserInfo(JSON.parse(user));
-        }
-    }, []);
 
     const handleLogout = () => {
         signOut();
     };
+    console.log(data);
 
     return (
         <section className="resturent-d-wrapper">
@@ -88,9 +76,12 @@ export default function DashboardLayout({ children }) {
                     </button>
                     <div className="top-row">
                         <div className="avatar-row">
-                            <CgProfile className="avatar" />
+                            {/* <CgProfile className="avatar" /> */}
+                            <div className="avatar">
+                                <img src={data?.user?.avatar} alt="avatar" />
+                            </div>
                             <h3 className="username">
-                                {data?.user?.name || "unknown user"}
+                                {data?.user?.username || "unknown user"}
                             </h3>
                             <h6 className="role">
                                 {data?.user?.role || "not found"}

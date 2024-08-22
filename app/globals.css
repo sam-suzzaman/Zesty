@@ -4,7 +4,7 @@
 
 * {
     margin: 0;
-    padding: 0%;
+    padding: 0;
     box-sizing: border-box;
     transition: all 0.3s linear;
 }
@@ -18,7 +18,7 @@ html {
     --secondary-clr: #d82e2e; */
     --primary-clr: #ff0844;
     --secondary-clr: #ffb199;
-    --accent-clr: #4d4d4d;
+    --accent-clr: #494949;
     --white-clr: #fff;
     --black-clr: #000;
 }

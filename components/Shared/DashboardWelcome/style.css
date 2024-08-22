@@ -1,0 +1,30 @@
+.welcome-container {
+}
+.welcome-container > .hero-row {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    padding: 1rem 1.25rem;
+    border-radius: 0.5rem;
+}
+
+.welcome-container > .hero-row > p.title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent-clr);
+}
+
+.welcome-container > .hero-row > p.title > .fancy-name {
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    color: var(--primary-clr);
+    opacity: 0.8;
+    margin-left: 0.15rem;
+}
+
+.welcome-container > .hero-row > p.info {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent-clr);
+    margin-top: 0.15rem;
+}
