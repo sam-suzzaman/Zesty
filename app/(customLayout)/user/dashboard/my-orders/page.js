@@ -26,7 +26,7 @@ const MyOrdersPage = () => {
         const handler = async () => {
             try {
                 const response = await fetch(
-                    `http://localhost:3000/api/order/${UserData?.user?._id}`
+                    `http://localhost:3000/api/order/customerOrders/${UserData?.user?._id}`
                 );
                 const result = await response.json();
 

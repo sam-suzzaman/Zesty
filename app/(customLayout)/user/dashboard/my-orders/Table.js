@@ -1,28 +1,36 @@
 "use client";
 
 import Loading from "@/components/Shared/Loading/Loading";
+import { ORDER_STATUS } from "@/lib/Constants";
 import dayjs from "dayjs";
 import React from "react";
+import toast from "react-hot-toast";
 import { FaEye } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
 const MyOrderTable = ({ setIsShowModal, setDetailFoodId, orders }) => {
+    // console.log(orders);
     const detailsBtnHandler = (id) => {
         setDetailFoodId(id);
         setIsShowModal(true);
     };
 
     const handleCancelOrder = async (id) => {
+        console.log(id);
         const options = {
             method: "PATCH",
-            body: JSON.stringify({ status: "CANCELLED" }),
+            body: JSON.stringify({ status: ORDER_STATUS.CANCELED }),
         };
         const response = await fetch(
-            `http://localhost:3000/api/common/order/${id}`,
+            `http://localhost:3000/api/order/status/${id}`,
             options
         );
         const result = await response.json();
-        console.log(result);
+        if (result.status) {
+            toast.success(`${result.result}`);
+        } else {
+            toast.error(`${result.result}`);
+        }
     };
 
     // Conditional UI starts
@@ -40,10 +48,6 @@ const MyOrderTable = ({ setIsShowModal, setDetailFoodId, orders }) => {
                 {orders.error}
             </h3>
         );
-    }
-
-    if (orders?.data) {
-        // console.log(orders.data);
     }
 
     return (
@@ -74,17 +78,17 @@ const MyOrderTable = ({ setIsShowModal, setDetailFoodId, orders }) => {
                                 <span className="currency">Tk</span>
                             </td>
                             <td>
-                                {order?.status == "PENDING" && (
+                                {order?.status == ORDER_STATUS.PENDING && (
                                     <span className="badge pending">
                                         {order?.status}
                                     </span>
                                 )}
-                                {order?.status == "DELIVERED" && (
+                                {/* {order?.status == ORDER_STATUS.CANCELED && (
                                     <span className="badge delivered">
                                         {order?.status}
                                     </span>
-                                )}
-                                {order?.status == "CANCELLED" && (
+                                )} */}
+                                {order?.status == ORDER_STATUS.CANCELED && (
                                     <span className="badge canceled">
                                         {order?.status}
                                     </span>
@@ -100,7 +104,8 @@ const MyOrderTable = ({ setIsShowModal, setDetailFoodId, orders }) => {
                                     >
                                         <FaEye className="mr-1" /> details
                                     </button>
-                                    {order?.status !== "CANCELLED" && (
+                                    {order?.status !==
+                                        ORDER_STATUS.CANCELED && (
                                         <button
                                             className="delete action-btn"
                                             onClick={() =>
