@@ -1,0 +1,136 @@
+.query-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: #eeeeee6a;
+    border-radius: 0.25rem;
+    margin-bottom: 0.25rem;
+    margin-top: 1.5rem;
+}
+
+.query-row > .left {
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.25rem;
+}
+
+.query-row > .left > .icon {
+    height: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent-clr);
+    margin-right: 0.5rem;
+}
+.query-row > .left > .search-box {
+    width: 100%;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-clr);
+    outline: none;
+    border: none;
+    text-transform: capitalize;
+    background-color: transparent;
+}
+.query-row > .left > .search-box {
+    width: 100%;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-clr);
+    outline: none;
+    border: none;
+}
+
+.query-row > .right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.25rem;
+}
+.query-row > .right > .row {
+    display: flex;
+    align-items: center;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--accent-clr);
+    opacity: 0.85;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+.query-row > .right > .row > .icon {
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+    opacity: 1;
+}
+.query-row > .right > .options {
+    position: absolute;
+    top: 35px;
+    right: 0;
+    /* display: flex; */
+    flex-direction: column;
+    width: 100%;
+    padding: 0.75rem 0.75rem;
+    background-color: var(--white-clr);
+    border-radius: 0.25rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    display: none;
+    opacity: 0;
+}
+.query-row > .right > .options.show {
+    top: 27px;
+    right: 0;
+    display: flex;
+    opacity: 1;
+}
+.query-row > .right > .options > .option {
+    font-size: 0.7rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    text-align: left;
+    color: var(--accent-clr);
+    opacity: 0.85;
+    padding: 0.25rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+.query-row > .right > .options > .option:first-child {
+    padding-top: 0;
+}
+.query-row > .right > .options > .option:last-child {
+    border-bottom: none;
+}
+.query-row > .right > .options > .option:hover {
+    opacity: 1;
+}
+
+.table-container-row .table td .customer {
+    display: flex;
+    flex-direction: column;
+}
+
+.table-container-row .table td .customer > .name {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-bottom: 1px;
+    color: var(--text-clr);
+    text-overflow: ellipsis;
+}
+.table-container-row .table td .customer > .contact {
+    font-size: 0.6rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    color: var(--accent-clr);
+    opacity: 0.9;
+}
+.table-container-row .table td .customer > .contact > .value {
+    font-weight: 500;
+}

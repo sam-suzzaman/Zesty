@@ -14,7 +14,8 @@ import { CgProfile } from "react-icons/cg";
 import { MdDashboardCustomize } from "react-icons/md";
 import { MdOutlineAddPhotoAlternate } from "react-icons/md";
 import { FaUserLarge } from "react-icons/fa6";
-import { SiReaddotcv } from "react-icons/si";
+import { GoStack } from "react-icons/go";
+import { GrHostMaintenance } from "react-icons/gr";
 
 import Logo from "@/components/Shared/Logo/Logo";
 import { usePathname } from "next/navigation";
@@ -44,7 +45,13 @@ const navData = [
         _id: 4,
         name: "manage foods",
         href: "/resturant/dashboard/all-food",
-        icon: <SiReaddotcv className="icon" />,
+        icon: <GrHostMaintenance className="icon" />,
+    },
+    {
+        _id: 5,
+        name: "manage orders",
+        href: "/resturant/dashboard/all-orders",
+        icon: <GoStack className="icon" />,
     },
 ];
 

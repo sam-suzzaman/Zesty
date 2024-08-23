@@ -19,6 +19,7 @@ html {
     --primary-clr: #ff0844;
     --secondary-clr: #ffb199;
     --accent-clr: #494949;
+    --text-clr: #3a3a3a;
     --white-clr: #fff;
     --black-clr: #000;
 }
@@ -29,4 +30,164 @@ html {
     color: #f32f2f;
     text-transform: capitalize;
     margin-top: 0.15rem;
+}
+
+/* --------------------------------
+Dashboard Table Common Styles
+-----------------------------------*/
+
+.table-container-row {
+    overflow-x: auto;
+}
+
+.table-container-row .table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 800px;
+}
+
+.table-container-row .table thead tr {
+    background-color: var(--primary-clr);
+    color: var(--white-clr);
+}
+.table-container-row .table thead tr th {
+    border-right: 1px solid #ff9e9e;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: 0.75rem;
+    padding: 0.4rem 0.25rem;
+}
+
+.table-container-row .table tbody tr:nth-child(even) {
+    background-color: #edebeb;
+}
+
+.table-container-row .table tr td {
+    border-right: 1px solid #ddd;
+}
+
+.table-container-row .table tbody tr td {
+    font-size: 0.7em;
+    font-weight: 400;
+    color: var(--text-clr);
+    letter-spacing: 0.1em;
+    padding: 0.4rem 0.75rem;
+}
+
+/* overall styles */
+.table-container-row .table th.center,
+.table-container-row .table td.center {
+    text-align: center;
+}
+.table-container-row .table th.medium,
+.table-container-row .table td.medium {
+    font-weight: 500;
+}
+.table-container-row .table th.bold,
+.table-container-row .table td.bold {
+    font-weight: 600;
+}
+
+.table-container-row .table td.Capitalize {
+    text-transform: capitalize;
+}
+
+/* thumb container */
+.table-container-row .table .thumb-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.table-container-row .table .thumb-container > .thumb {
+    width: 3.75rem;
+    height: 2.18rem;
+    object-fit: cover;
+    border-radius: 0.25rem;
+}
+
+/* action button */
+.table-container-row .table .action-row {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.table-container-row .table .action-btn {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-transform: capitalize;
+    font-size: 0.6rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    padding: 0.2rem 0.625rem;
+    border-radius: 0.25rem;
+}
+.table-container-row .table .action-btn > .icon {
+    font-size: 0.72rem;
+    margin-right: 0.25rem;
+}
+
+/* button's color */
+.table-container-row .table .action-btn {
+    background-color: rgba(63, 63, 63, 0.12);
+    color: var(--text-clr);
+}
+.table-container-row .table .action-btn:hover {
+    background-color: var(--text-clr);
+    color: #fff;
+}
+.table-container-row .table .action-btn.info {
+    background-color: rgba(48, 103, 254, 0.15);
+    color: #3067fe;
+}
+.table-container-row .table .action-btn.info:hover {
+    background-color: #4275ff;
+    color: #fff;
+}
+.table-container-row .table .action-btn.success {
+    background-color: rgba(48, 254, 93, 0.15);
+    color: #02b65f;
+}
+.table-container-row .table .action-btn.success:hover {
+    background-color: #02b65f;
+    color: #fff;
+}
+.table-container-row .table .action-btn.danger {
+    background-color: rgba(255, 0, 0, 0.15);
+    color: rgb(210, 6, 6);
+}
+.table-container-row .table .action-btn.danger:hover {
+    background-color: rgb(240, 70, 70);
+    color: #fff;
+}
+
+/* badge */
+.table-container-row .table .badge {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-transform: capitalize;
+    font-size: 0.6rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    padding: 0.2rem 0.625rem;
+    border-radius: 0.25rem;
+}
+
+.table-container-row .table .badge.pending {
+    background-color: rgba(255, 166, 0, 0.15);
+    color: orangered;
+}
+.table-container-row .table .badge.success {
+    background-color: rgba(48, 254, 93, 0.15);
+    color: #02b65f;
+}
+.table-container-row .table .badge.danger {
+    background-color: rgba(255, 0, 0, 0.15);
+    color: rgb(210, 6, 6);
 }

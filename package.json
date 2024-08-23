@@ -1,28 +1,29 @@
 {
-  "name": "zesty",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "bcrypt": "^5.1.1",
-    "dayjs": "^1.11.12",
-    "mongoose": "^8.5.1",
-    "next": "14.2.5",
-    "next-auth": "^4.24.7",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-hook-form": "^7.52.1",
-    "react-hot-toast": "^2.4.1",
-    "react-icons": "^5.2.1",
-    "sweetalert": "^2.1.2"
-  },
-  "devDependencies": {
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1"
-  }
+    "name": "zesty",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "turbo": "next dev --turbo",
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "bcrypt": "^5.1.1",
+        "dayjs": "^1.11.12",
+        "mongoose": "^8.5.1",
+        "next": "14.2.5",
+        "next-auth": "^4.24.7",
+        "react": "^18",
+        "react-dom": "^18",
+        "react-hook-form": "^7.52.1",
+        "react-hot-toast": "^2.4.1",
+        "react-icons": "^5.2.1",
+        "sweetalert": "^2.1.2"
+    },
+    "devDependencies": {
+        "postcss": "^8",
+        "tailwindcss": "^3.4.1"
+    }
 }
