@@ -2,7 +2,6 @@ import React from "react";
 import { MdClose } from "react-icons/md";
 
 const OrderModal = ({ setIsShowModal, selectedOrder }) => {
-    console.log(selectedOrder);
     return (
         <div className="order-modal-container">
             <div className="modal-card">

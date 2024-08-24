@@ -2,7 +2,7 @@ import React from "react";
 import { SlActionRedo } from "react-icons/sl";
 import { HiDotsVertical } from "react-icons/hi";
 
-const Table = () => {
+const Table = ({ setIsShowModal }) => {
     return (
         <div className="table-container-row all-order-table-row">
             <table className="table">
@@ -45,7 +45,10 @@ const Table = () => {
                         </td>
                         <td>
                             <div className="action-row">
-                                <button className="action-btn">
+                                <button
+                                    className="action-btn"
+                                    onClick={() => setIsShowModal(true)}
+                                >
                                     <SlActionRedo className="icon" />
                                     action
                                 </button>

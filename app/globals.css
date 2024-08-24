@@ -173,7 +173,6 @@ Dashboard Table Common Styles
     text-transform: capitalize;
     font-size: 0.6rem;
     font-weight: 400;
-    cursor: pointer;
     transition: all 0.3s linear;
     padding: 0.2rem 0.625rem;
     border-radius: 0.25rem;
@@ -188,6 +187,34 @@ Dashboard Table Common Styles
     color: #02b65f;
 }
 .table-container-row .table .badge.danger {
+    background-color: rgba(255, 0, 0, 0.15);
+    color: rgb(210, 6, 6);
+}
+
+/* --------------------
+common badge
+-----------------------*/
+.badge {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-transform: capitalize;
+    font-size: 0.6rem;
+    font-weight: 400;
+    transition: all 0.3s linear;
+    padding: 0.2rem 0.625rem;
+    border-radius: 0.25rem;
+}
+
+.badge.pending {
+    background-color: rgba(255, 166, 0, 0.15);
+    color: orangered;
+}
+.badge.success {
+    background-color: rgba(48, 254, 93, 0.15);
+    color: #02b65f;
+}
+.table .badge.danger {
     background-color: rgba(255, 0, 0, 0.15);
     color: rgb(210, 6, 6);
 }
