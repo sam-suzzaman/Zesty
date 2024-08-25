@@ -8,9 +8,9 @@ const SubOrderSchema = new mongoose.Schema(
             ref: "ParentOrder",
             required: true,
         },
-        restaurant: {
+        resturant: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Restaurant",
+            ref: "Resturant",
             required: true,
         },
         items: [

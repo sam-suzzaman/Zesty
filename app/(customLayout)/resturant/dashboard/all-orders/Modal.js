@@ -1,7 +1,43 @@
-import React from "react";
+import { ARRAY_OF_ORDER_STATUS, ORDER_STATUS } from "@/lib/Constants";
+import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { MdClose } from "react-icons/md";
 
-const Modal = ({ setIsShowModal }) => {
+const Modal = ({ setIsShowModal, modalOrder, refetchAllOrders }) => {
+    const [selectedStatus, setSelectedStatus] = useState("");
+
+    useEffect(() => {
+        setSelectedStatus(modalOrder?.status);
+    }, [modalOrder]);
+
+    const orderStatusHandler = async (value) => {
+        setSelectedStatus(value);
+        const options = {
+            method: "PATCH",
+            body: JSON.stringify({
+                status: value,
+                resturantID: modalOrder?.resturant,
+            }),
+        };
+        try {
+            const response = await fetch(
+                `http://localhost:3000/api/order/status/${modalOrder?._id}`,
+                options
+            );
+            const result = await response.json();
+            if (result.status) {
+                toast.success(`${result.result}`);
+                refetchAllOrders();
+            } else {
+                setSelectedStatus(modalOrder?.status);
+                toast.error(`${result.result}`);
+            }
+        } catch (error) {
+            setSelectedStatus(modalOrder?.status);
+            toast.error(`Failed(${error.message})`);
+        }
+    };
+
     return (
         <div className="manage-order-modal">
             <div className="modal-card">
@@ -17,26 +53,34 @@ const Modal = ({ setIsShowModal }) => {
                             <h4 className="title">basic info</h4>
                             <h6 className="id">
                                 Order ID:
-                                <span className="value">#09758432</span>
+                                <span className="value">{`#${modalOrder?._id.slice(
+                                    -6
+                                )}`}</span>
                             </h6>
                             <h6 className="name">
                                 Customar Name:
                                 <span className="value capitalize">
-                                    md samsuzzaman
+                                    {modalOrder?.parentOrder?.customerName}
                                 </span>
                             </h6>
                             <h6 className="contact">
                                 Contact Number:
-                                <span className="value">md samsuzzaman</span>
+                                <span className="value">
+                                    {modalOrder?.parentOrder?.contactNumber}
+                                </span>
                             </h6>
                             <h6 className="name">
                                 delivary address:
-                                <span className="value">md samsuzzaman</span>
+                                <span className="value">
+                                    {modalOrder?.parentOrder?.delivaryAddress}
+                                </span>
                             </h6>
                             <h6 className="name">
                                 order status:
-                                <span className="ml-2 badge pending">
-                                    pending
+                                <span
+                                    className={`ml-2 badge ${modalOrder?.status}`}
+                                >
+                                    {modalOrder?.status}
                                 </span>
                             </h6>
                         </div>
@@ -46,12 +90,14 @@ const Modal = ({ setIsShowModal }) => {
                                 name=""
                                 id=""
                                 className="status-options"
-                                value="a"
+                                onChange={(e) =>
+                                    orderStatusHandler(e.target.value)
+                                }
+                                value={selectedStatus}
                             >
-                                <option value="a">pending</option>
-                                <option value="b">success</option>
-                                <option value="c">pending</option>
-                                <option value="d">success</option>
+                                {ARRAY_OF_ORDER_STATUS.map((item) => (
+                                    <option key={item}>{item}</option>
+                                ))}
                             </select>
                         </div>
                     </div>
@@ -67,36 +113,28 @@ const Modal = ({ setIsShowModal }) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <div className="thumb-container">
-                                            <img
-                                                src="https://images.pexels.com/photos/26599586/pexels-photo-26599586/free-photo-of-vultures-perching-on-eroded-tree.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                                                alt=""
-                                                className="thumb"
-                                            />
-                                        </div>
-                                    </td>
-                                    <td className="medium Capitalize">
-                                        chicken burger food
-                                    </td>
-                                    <td className="center medium">03</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div className="thumb-container">
-                                            <img
-                                                src="https://images.pexels.com/photos/26599586/pexels-photo-26599586/free-photo-of-vultures-perching-on-eroded-tree.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                                                alt=""
-                                                className="thumb"
-                                            />
-                                        </div>
-                                    </td>
-                                    <td className="medium Capitalize">
-                                        chicken burger food
-                                    </td>
-                                    <td className="center medium">03</td>
-                                </tr>
+                                {modalOrder?.items?.map((item) => (
+                                    <tr key={item._id}>
+                                        <td>
+                                            <div className="thumb-container">
+                                                <img
+                                                    src={
+                                                        item?.food
+                                                            ?.foodThumbnail
+                                                    }
+                                                    alt="food"
+                                                    className="thumb"
+                                                />
+                                            </div>
+                                        </td>
+                                        <td className="medium Capitalize">
+                                            {item?.food?.foodTitle}
+                                        </td>
+                                        <td className="center medium">
+                                            {item?.quantity}
+                                        </td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </table>
                     </div>

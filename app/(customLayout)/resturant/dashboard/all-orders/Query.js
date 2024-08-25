@@ -1,12 +1,14 @@
 "use client";
+import { ARRAY_OF_ORDER_STATUS } from "@/lib/Constants";
 import React, { useEffect, useRef, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { IoFilter } from "react-icons/io5";
 
-const Query = () => {
-    const [isOptionShow, setIsOptionShow] = useState(false);
-    const optionsRef = useRef(null);
+const Query = ({ query, setQuery }) => {
+    const [isOptionShow, setIsOptionShow] = useState(false); // filter options show/hide state
+    const optionsRef = useRef(null); // filter options ref value
 
+    // filter menu show/hide controller
     useEffect(() => {
         function handleClickOutside(event) {
             if (
@@ -50,8 +52,23 @@ const Query = () => {
                     ref={optionsRef}
                     onClick={() => setIsOptionShow(false)}
                 >
-                    <button className="option">pending</button>
-                    <button className="option">complete</button>
+                    <button
+                        className="option"
+                        onClick={() => setQuery({ ...query, filter: "all" })}
+                    >
+                        DEFAULT
+                    </button>
+                    {ARRAY_OF_ORDER_STATUS.map((value) => (
+                        <button
+                            className="option"
+                            key={value}
+                            onClick={() =>
+                                setQuery({ ...query, filter: value })
+                            }
+                        >
+                            {value}
+                        </button>
+                    ))}
                 </div>
             </div>
         </div>

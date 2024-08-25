@@ -165,32 +165,6 @@ Dashboard Table Common Styles
     color: #fff;
 }
 
-/* badge */
-.table-container-row .table .badge {
-    display: inline-flex;
-    justify-content: flex-start;
-    align-items: center;
-    text-transform: capitalize;
-    font-size: 0.6rem;
-    font-weight: 400;
-    transition: all 0.3s linear;
-    padding: 0.2rem 0.625rem;
-    border-radius: 0.25rem;
-}
-
-.table-container-row .table .badge.pending {
-    background-color: rgba(255, 166, 0, 0.15);
-    color: orangered;
-}
-.table-container-row .table .badge.success {
-    background-color: rgba(48, 254, 93, 0.15);
-    color: #02b65f;
-}
-.table-container-row .table .badge.danger {
-    background-color: rgba(255, 0, 0, 0.15);
-    color: rgb(210, 6, 6);
-}
-
 /* --------------------
 common badge
 -----------------------*/
@@ -200,21 +174,29 @@ common badge
     align-items: center;
     text-transform: capitalize;
     font-size: 0.6rem;
-    font-weight: 400;
+    font-weight: 500;
     transition: all 0.3s linear;
     padding: 0.2rem 0.625rem;
     border-radius: 0.25rem;
 }
 
-.badge.pending {
+.badge.PENDING {
     background-color: rgba(255, 166, 0, 0.15);
     color: orangered;
 }
-.badge.success {
-    background-color: rgba(48, 254, 93, 0.15);
-    color: #02b65f;
+
+.badge.ACCEPTED,
+.badge.PREPARING {
+    background-color: rgba(0, 85, 189, 0.15);
+    color: #044ca4;
 }
-.table .badge.danger {
+
+.badge.COMPLETED,
+.badge.PARTIALLY_DELIVARED {
+    background-color: rgba(5, 200, 54, 0.15);
+    color: #007e41;
+}
+.badge.CANCELED {
     background-color: rgba(255, 0, 0, 0.15);
     color: rgb(210, 6, 6);
 }

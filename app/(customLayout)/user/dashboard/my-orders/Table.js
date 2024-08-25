@@ -16,20 +16,23 @@ const MyOrderTable = ({ setIsShowModal, setDetailFoodId, orders }) => {
     };
 
     const handleCancelOrder = async (id) => {
-        console.log(id);
         const options = {
             method: "PATCH",
             body: JSON.stringify({ status: ORDER_STATUS.CANCELED }),
         };
-        const response = await fetch(
-            `http://localhost:3000/api/order/status/${id}`,
-            options
-        );
-        const result = await response.json();
-        if (result.status) {
-            toast.success(`${result.result}`);
-        } else {
-            toast.error(`${result.result}`);
+        try {
+            const response = await fetch(
+                `http://localhost:3000/api/order/status/${id}`,
+                options
+            );
+            const result = await response.json();
+            if (result.status) {
+                toast.success(`${result.result}`);
+            } else {
+                toast.error(`${result.result}`);
+            }
+        } catch (error) {
+            toast.error(`Failed(${error.message})`);
         }
     };
 
@@ -68,7 +71,7 @@ const MyOrderTable = ({ setIsShowModal, setDetailFoodId, orders }) => {
                             <td>{`#${order?._id}`}</td>
                             <td className="">
                                 {dayjs(order?.createdAt).format(
-                                    "DD-MM-YYYY, hh:mm a"
+                                    "DD-MMM-YYYY, hh:mm a"
                                 )}
                             </td>
                             <td>
